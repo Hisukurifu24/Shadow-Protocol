@@ -1,0 +1,180 @@
+{
+	"categories": [
+		{
+			"uuid": "e316f62c-4d0b-4232-b51c-c39910d21512",
+			"title": "NewFeature",
+			"color": "70bafa"
+		},
+		{
+			"uuid": "b1528711-7945-4de0-b9b2-6467ecffce02",
+			"title": "Updated",
+			"color": "09d05c"
+		},
+		{
+			"uuid": "64eb5ce6-db13-4c70-9da3-d82bf3fbb76a",
+			"title": "Postponed",
+			"color": "c9b701"
+		},
+		{
+			"uuid": "dcef4929-196d-4529-a7c7-c05f2efac2d7",
+			"title": "Bug",
+			"color": "d51a48"
+		}
+	],
+	"stages": [
+		{
+			"uuid": "5a4cf4cf-dab0-4bcf-a902-278f0fef495c",
+			"title": "Todo",
+			"tasks": [
+				"2b1a7b52-8274-4e28-8a39-a59ddf680403",
+				"483ce63c-545c-456d-a494-de310400256b",
+				"7bce1e9e-c0b3-4106-b604-4973c5d3456e",
+				"b7406614-44bf-41f2-9bd3-0abff8e46a64",
+				"940ab036-e3ec-46f5-bc47-f54036c0bae2",
+				"25bee614-7d31-4f68-bd9d-9ce565405678",
+				"d77e7976-3a3e-4c7b-80d8-3314c7f54726",
+				"9cebe1ad-963c-41fc-bd8d-f0ae39f565f2",
+				"c466ac2e-e66c-403d-830f-80b1ec5ccd44"
+			]
+		},
+		{
+			"uuid": "675b0020-0264-4ef2-9e0c-5a16b29d390b",
+			"title": "Doing",
+			"tasks": [
+				"38b3a401-08ec-443d-8ece-3226cde276ac"
+			]
+		},
+		{
+			"uuid": "5553020b-26d4-4d9f-83ec-0f77d1a1667d",
+			"title": "Done",
+			"tasks": [
+				"f76df0f9-cdb7-4588-9eb8-c5c1e7a62b76"
+			]
+		},
+		{
+			"uuid": "b89df0cc-5a9f-4abe-92da-37374842df7c",
+			"title": "Postponed",
+			"tasks": []
+		}
+	],
+	"tasks": [
+		{
+			"uuid": "f76df0f9-cdb7-4588-9eb8-c5c1e7a62b76",
+			"title": "Movimento & Controlli",
+			"description": "",
+			"category": "e316f62c-4d0b-4232-b51c-c39910d21512",
+			"steps": [
+				{
+					"details": "Movimento WASD",
+					"done": true
+				},
+				{
+					"details": "mouse per mirare",
+					"done": true
+				},
+				{
+					"details": "Sparo proiettili con cooldown",
+					"done": true
+				}
+			]
+		},
+		{
+			"uuid": "38b3a401-08ec-443d-8ece-3226cde276ac",
+			"title": "Nemici",
+			"description": "Spawn casuale, si avvicinano e attaccano il player",
+			"category": "e316f62c-4d0b-4232-b51c-c39910d21512",
+			"steps": [
+				{
+					"details": "AI",
+					"done": false
+				}
+			]
+		},
+		{
+			"uuid": "2b1a7b52-8274-4e28-8a39-a59ddf680403",
+			"title": "Health system",
+			"description": "per player e nemici",
+			"category": "e316f62c-4d0b-4232-b51c-c39910d21512",
+			"steps": []
+		},
+		{
+			"uuid": "483ce63c-545c-456d-a494-de310400256b",
+			"title": "Fog-of-war",
+			"description": "Implementata con shader/mask che rivela solo l’area intorno al player. Nemici fuori dalla zona visibile = nascosti",
+			"category": "e316f62c-4d0b-4232-b51c-c39910d21512",
+			"steps": []
+		},
+		{
+			"uuid": "7bce1e9e-c0b3-4106-b604-4973c5d3456e",
+			"title": "Multiplayer base",
+			"description": "2 giocatori online o in LAN. Sincronizzazione posizione, spari e HP. Host/Client (usando ENetMultiplayerPeer in Godot 4).",
+			"category": "e316f62c-4d0b-4232-b51c-c39910d21512",
+			"steps": []
+		},
+		{
+			"uuid": "b7406614-44bf-41f2-9bd3-0abff8e46a64",
+			"title": "UI",
+			"description": "",
+			"category": "e316f62c-4d0b-4232-b51c-c39910d21512",
+			"steps": [
+				{
+					"details": "HUD con HP e ammo",
+					"done": false
+				},
+				{
+					"details": "Schermata Game Over / Victory.",
+					"done": false
+				}
+			]
+		},
+		{
+			"uuid": "940ab036-e3ec-46f5-bc47-f54036c0bae2",
+			"title": "Power-up",
+			"description": "Power-up (velocità, fuoco rapido, granata).",
+			"category": "e316f62c-4d0b-4232-b51c-c39910d21512",
+			"steps": []
+		},
+		{
+			"uuid": "25bee614-7d31-4f68-bd9d-9ce565405678",
+			"title": "Mini-mappa",
+			"description": "Mini-mappa che mostra solo l’area esplorata (tipo RTS).",
+			"category": "e316f62c-4d0b-4232-b51c-c39910d21512",
+			"steps": []
+		},
+		{
+			"uuid": "d77e7976-3a3e-4c7b-80d8-3314c7f54726",
+			"title": "Modalità Co-op",
+			"description": "sopravvivere insieme a ondate",
+			"category": "e316f62c-4d0b-4232-b51c-c39910d21512",
+			"steps": []
+		},
+		{
+			"uuid": "9cebe1ad-963c-41fc-bd8d-f0ae39f565f2",
+			"title": "PvP",
+			"description": "duello a colpi di proiettili",
+			"category": "e316f62c-4d0b-4232-b51c-c39910d21512",
+			"steps": []
+		},
+		{
+			"uuid": "c466ac2e-e66c-403d-830f-80b1ec5ccd44",
+			"title": "Leaderboard locale/online",
+			"description": "anche JSON su file per semplicità",
+			"category": "e316f62c-4d0b-4232-b51c-c39910d21512",
+			"steps": []
+		}
+	],
+	"layout": {
+		"columns": [
+			[
+				"5a4cf4cf-dab0-4bcf-a902-278f0fef495c"
+			],
+			[
+				"675b0020-0264-4ef2-9e0c-5a16b29d390b"
+			],
+			[
+				"5553020b-26d4-4d9f-83ec-0f77d1a1667d",
+				"b89df0cc-5a9f-4abe-92da-37374842df7c"
+			]
+		]
+	}
+}
