@@ -1,10 +1,26 @@
 extends CharacterBody2D
 
+# Animation state enums
+enum PlayerState {
+	IDLE,
+	WALKING,
+	SPRINTING,
+	STRAFING_LEFT,
+	STRAFING_RIGHT
+}
+
+enum BodyState {
+	IDLE,
+	MOVING,
+	SHOOTING,
+	RELOADING
+}
+
 @export var speed: float = 300.0
 @export var sprint_multiplier: float = 1.5
 
 const BULLET := preload("res://scenes/Bullet.tscn")
-@onready var muzzle: Node2D = $Muzzle if has_node("Muzzle") else self
+@onready var muzzle: Node2D = $Muzzle
 @onready var feet_sprite: AnimatedSprite2D = $FeetSprite
 @onready var body_sprite: AnimatedSprite2D = $BodySprite
 
@@ -24,6 +40,12 @@ var _is_shooting := false
 var _shoot_timer := 0.0
 
 var _is_sprinting := false
+
+# Animation state tracking
+var current_player_state: PlayerState = PlayerState.IDLE
+var current_body_state: BodyState = BodyState.IDLE
+var previous_player_state: PlayerState = PlayerState.IDLE
+var previous_body_state: BodyState = BodyState.IDLE
 
 func _ready() -> void:
 	# Initialize ammo
@@ -59,35 +81,11 @@ func _physics_process(delta: float) -> void:
 	
 	
 	if input_direction.length() > 0:
-		# Calculate if player is strafing (moving perpendicular to facing direction)
-		var facing_direction = Vector2.RIGHT.rotated(rotation)
-		var dot_product = input_direction.dot(facing_direction)
-		var cross_product = input_direction.cross(facing_direction)
-		
-		# Check if movement is more perpendicular than forward/backward (dot product close to 0)
-		var is_strafing = abs(dot_product) < 0.7 and abs(cross_product) > 0.3
-		
-		if is_strafing:
-			# Determine strafe direction based on cross product sign
-			if cross_product > 0:
-				feet_sprite.play("strafe_left")
-			else:
-				feet_sprite.play("strafe_right")
-		elif _is_sprinting:
-			feet_sprite.play("sprint")
-		else:
-			feet_sprite.play("walk")
-
-		if not body_sprite.is_playing():
-			body_sprite.play("move")
 		# Normalize diagonal movement
 		input_direction = input_direction.normalized()
 		velocity = input_direction * speed
 		velocity *= sprint_multiplier if _is_sprinting else 1.0
 	else:
-		feet_sprite.play("idle")
-		if not body_sprite.is_playing():
-			body_sprite.play("idle")
 		velocity = Vector2.ZERO
 	
 
@@ -100,6 +98,10 @@ func _physics_process(delta: float) -> void:
 	# Move the character
 	move_and_slide()
 
+	# Update animation states
+	_update_player_states()
+	_update_animations()
+
 	# Handle reload input
 	if Input.is_action_just_pressed("reload") and not _is_reloading and current_ammo < max_magazine_size and total_ammo > 0:
 		_start_reload()
@@ -110,7 +112,6 @@ func _physics_process(delta: float) -> void:
 		if current_ammo > 0:
 			_is_shooting = true
 			_shoot_timer = shoot_animation_duration
-			body_sprite.play("shoot")
 			shoot()
 			_cooldown = 1.0 / fire_rate
 			current_ammo -= 1
@@ -148,7 +149,6 @@ func _start_reload() -> void:
 		return
 	
 	_is_reloading = true
-	body_sprite.play("reload")
 	print("Reloading... - Current: " + str(current_ammo) + "/" + str(max_magazine_size) + " Total: " + str(total_ammo))
 
 func _finish_reload() -> void:
@@ -168,6 +168,64 @@ func _on_animation_finished() -> void:
 	# Check if the finished animation was "reload"
 	if body_sprite.animation == "reload" and _is_reloading:
 		_finish_reload()
+
+func _update_player_states() -> void:
+	# Determine body state (higher priority)
+	if _is_reloading:
+		current_body_state = BodyState.RELOADING
+	elif _is_shooting:
+		current_body_state = BodyState.SHOOTING
+	elif velocity.length() > 0:
+		current_body_state = BodyState.MOVING
+	else:
+		current_body_state = BodyState.IDLE
+	
+	# Determine player/feet state
+	if velocity.length() == 0:
+		current_player_state = PlayerState.IDLE
+	else:
+		var facing_direction = Vector2.RIGHT.rotated(rotation)
+		var dot_product = velocity.normalized().dot(facing_direction)
+		var cross_product = velocity.normalized().cross(facing_direction)
+		var is_strafing = abs(dot_product) < 0.7 and abs(cross_product) > 0.3
+		
+		if is_strafing:
+			current_player_state = PlayerState.STRAFING_LEFT if cross_product > 0 else PlayerState.STRAFING_RIGHT
+		elif _is_sprinting:
+			current_player_state = PlayerState.SPRINTING
+		else:
+			current_player_state = PlayerState.WALKING
+
+func _update_animations() -> void:
+	# Update body animations only when state changes
+	if current_body_state != previous_body_state:
+		match current_body_state:
+			BodyState.IDLE:
+				body_sprite.play("idle")
+			BodyState.MOVING:
+				body_sprite.play("move")
+			BodyState.SHOOTING:
+				body_sprite.play("shoot")
+			BodyState.RELOADING:
+				body_sprite.play("reload")
+		
+		previous_body_state = current_body_state
+	
+	# Update feet animations only when state changes
+	if current_player_state != previous_player_state:
+		match current_player_state:
+			PlayerState.IDLE:
+				feet_sprite.play("idle")
+			PlayerState.WALKING:
+				feet_sprite.play("walk")
+			PlayerState.SPRINTING:
+				feet_sprite.play("sprint")
+			PlayerState.STRAFING_LEFT:
+				feet_sprite.play("strafe_left")
+			PlayerState.STRAFING_RIGHT:
+				feet_sprite.play("strafe_right")
+		
+		previous_player_state = current_player_state
 
 func get_ammo_info() -> Dictionary:
 	return {
