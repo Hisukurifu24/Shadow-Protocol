@@ -1,0 +1,240 @@
+[gd_resource type="SpriteFrames" load_steps=56 format=3 uid="uid://c8yte7yvk0pr0"]
+
+[ext_resource type="Texture2D" uid="uid://i0jsqx3b5281" path="res://Arts/character/knife/idle/survivor-idle_knife_0.png" id="1_pa8wb"]
+[ext_resource type="Texture2D" uid="uid://dcw7d2po2tylx" path="res://Arts/character/knife/idle/survivor-idle_knife_1.png" id="2_081be"]
+[ext_resource type="Texture2D" uid="uid://ba1gmg7ofye5x" path="res://Arts/character/knife/idle/survivor-idle_knife_2.png" id="3_488va"]
+[ext_resource type="Texture2D" uid="uid://crmc7clm5a5xw" path="res://Arts/character/knife/idle/survivor-idle_knife_3.png" id="4_6mwij"]
+[ext_resource type="Texture2D" uid="uid://ckfy5rm8gj0qb" path="res://Arts/character/knife/idle/survivor-idle_knife_4.png" id="5_ukkf7"]
+[ext_resource type="Texture2D" uid="uid://c1iceivdf2blf" path="res://Arts/character/knife/idle/survivor-idle_knife_5.png" id="6_8fkrd"]
+[ext_resource type="Texture2D" uid="uid://c6e2ivuf5syc1" path="res://Arts/character/knife/idle/survivor-idle_knife_6.png" id="7_2o2q7"]
+[ext_resource type="Texture2D" uid="uid://dsql6cboir7pp" path="res://Arts/character/knife/idle/survivor-idle_knife_7.png" id="8_yiefc"]
+[ext_resource type="Texture2D" uid="uid://tw273q1twlas" path="res://Arts/character/knife/idle/survivor-idle_knife_8.png" id="9_huyd2"]
+[ext_resource type="Texture2D" uid="uid://b4menuf0ysd7x" path="res://Arts/character/knife/idle/survivor-idle_knife_9.png" id="10_4kmpl"]
+[ext_resource type="Texture2D" uid="uid://dub5h7irwsn1c" path="res://Arts/character/knife/idle/survivor-idle_knife_10.png" id="11_embta"]
+[ext_resource type="Texture2D" uid="uid://buq8j8w4vq4vm" path="res://Arts/character/knife/idle/survivor-idle_knife_11.png" id="12_31klu"]
+[ext_resource type="Texture2D" uid="uid://mhim1nqtinpf" path="res://Arts/character/knife/idle/survivor-idle_knife_12.png" id="13_ckk2v"]
+[ext_resource type="Texture2D" uid="uid://d0jio3jaa80k1" path="res://Arts/character/knife/idle/survivor-idle_knife_13.png" id="14_kcv7j"]
+[ext_resource type="Texture2D" uid="uid://cancvorctrip1" path="res://Arts/character/knife/idle/survivor-idle_knife_14.png" id="15_fgh33"]
+[ext_resource type="Texture2D" uid="uid://bydo0fr06ahc7" path="res://Arts/character/knife/idle/survivor-idle_knife_15.png" id="16_td3fh"]
+[ext_resource type="Texture2D" uid="uid://bbx5ujou5dtr" path="res://Arts/character/knife/idle/survivor-idle_knife_16.png" id="17_4tyvu"]
+[ext_resource type="Texture2D" uid="uid://b5d1mk2rk84wa" path="res://Arts/character/knife/idle/survivor-idle_knife_17.png" id="18_efrv4"]
+[ext_resource type="Texture2D" uid="uid://bd1e07ldd8p1i" path="res://Arts/character/knife/idle/survivor-idle_knife_18.png" id="19_ixaty"]
+[ext_resource type="Texture2D" uid="uid://croofcjogknh7" path="res://Arts/character/knife/idle/survivor-idle_knife_19.png" id="20_yqehv"]
+[ext_resource type="Texture2D" uid="uid://8v8mbmoum56k" path="res://Arts/character/knife/meleeattack/survivor-meleeattack_knife_0.png" id="21_j032h"]
+[ext_resource type="Texture2D" uid="uid://cwmyuyjwr7nj7" path="res://Arts/character/knife/meleeattack/survivor-meleeattack_knife_1.png" id="22_ow2m6"]
+[ext_resource type="Texture2D" uid="uid://d00o1mxn0d2ew" path="res://Arts/character/knife/meleeattack/survivor-meleeattack_knife_2.png" id="23_rpccp"]
+[ext_resource type="Texture2D" uid="uid://c84ak4iacrdyi" path="res://Arts/character/knife/meleeattack/survivor-meleeattack_knife_3.png" id="24_1xfka"]
+[ext_resource type="Texture2D" uid="uid://dlml8gao2w3cd" path="res://Arts/character/knife/meleeattack/survivor-meleeattack_knife_4.png" id="25_87u1d"]
+[ext_resource type="Texture2D" uid="uid://ce48xal2qtpqe" path="res://Arts/character/knife/meleeattack/survivor-meleeattack_knife_5.png" id="26_bu7mo"]
+[ext_resource type="Texture2D" uid="uid://drp71u23h6jcq" path="res://Arts/character/knife/meleeattack/survivor-meleeattack_knife_6.png" id="27_3lel1"]
+[ext_resource type="Texture2D" uid="uid://botc3alupo7vu" path="res://Arts/character/knife/meleeattack/survivor-meleeattack_knife_7.png" id="28_o635g"]
+[ext_resource type="Texture2D" uid="uid://be5xwx7lopboh" path="res://Arts/character/knife/meleeattack/survivor-meleeattack_knife_8.png" id="29_mjc7j"]
+[ext_resource type="Texture2D" uid="uid://ddx558tw2n6ys" path="res://Arts/character/knife/meleeattack/survivor-meleeattack_knife_9.png" id="30_nbnru"]
+[ext_resource type="Texture2D" uid="uid://u1m5cq32m7ye" path="res://Arts/character/knife/meleeattack/survivor-meleeattack_knife_10.png" id="31_6e613"]
+[ext_resource type="Texture2D" uid="uid://cbvstt2p3q80l" path="res://Arts/character/knife/meleeattack/survivor-meleeattack_knife_11.png" id="32_2e4bq"]
+[ext_resource type="Texture2D" uid="uid://d2pr6p5oceqc" path="res://Arts/character/knife/meleeattack/survivor-meleeattack_knife_12.png" id="33_te03l"]
+[ext_resource type="Texture2D" uid="uid://dmpln2chlu6m8" path="res://Arts/character/knife/meleeattack/survivor-meleeattack_knife_13.png" id="34_81oms"]
+[ext_resource type="Texture2D" uid="uid://db3xbgm53npl8" path="res://Arts/character/knife/meleeattack/survivor-meleeattack_knife_14.png" id="35_xjh3m"]
+[ext_resource type="Texture2D" uid="uid://cpnd5m8fvtcfe" path="res://Arts/character/knife/move/survivor-move_knife_0.png" id="36_1uxcg"]
+[ext_resource type="Texture2D" uid="uid://cjoiilv5srqro" path="res://Arts/character/knife/move/survivor-move_knife_1.png" id="37_m3ysx"]
+[ext_resource type="Texture2D" uid="uid://dbk7jaimj3ahd" path="res://Arts/character/knife/move/survivor-move_knife_2.png" id="38_qqe5r"]
+[ext_resource type="Texture2D" uid="uid://cb2ly706oriex" path="res://Arts/character/knife/move/survivor-move_knife_3.png" id="39_q4xt1"]
+[ext_resource type="Texture2D" uid="uid://dnu4n5exjifr4" path="res://Arts/character/knife/move/survivor-move_knife_4.png" id="40_8lb5p"]
+[ext_resource type="Texture2D" uid="uid://h3td8nohmrut" path="res://Arts/character/knife/move/survivor-move_knife_5.png" id="41_uf58q"]
+[ext_resource type="Texture2D" uid="uid://dovcubuoxfijy" path="res://Arts/character/knife/move/survivor-move_knife_6.png" id="42_qbnv3"]
+[ext_resource type="Texture2D" uid="uid://d0g1bsfiovynr" path="res://Arts/character/knife/move/survivor-move_knife_7.png" id="43_k1fa6"]
+[ext_resource type="Texture2D" uid="uid://3gsal8vev0d3" path="res://Arts/character/knife/move/survivor-move_knife_8.png" id="44_wcyxr"]
+[ext_resource type="Texture2D" uid="uid://bqhpeveli41ov" path="res://Arts/character/knife/move/survivor-move_knife_9.png" id="45_5nk1h"]
+[ext_resource type="Texture2D" uid="uid://b0yigakcy723a" path="res://Arts/character/knife/move/survivor-move_knife_10.png" id="46_yr1j1"]
+[ext_resource type="Texture2D" uid="uid://4quionf02b4n" path="res://Arts/character/knife/move/survivor-move_knife_11.png" id="47_gcayv"]
+[ext_resource type="Texture2D" uid="uid://o5dw56y275d3" path="res://Arts/character/knife/move/survivor-move_knife_12.png" id="48_okvov"]
+[ext_resource type="Texture2D" uid="uid://du2ihckl61x2e" path="res://Arts/character/knife/move/survivor-move_knife_13.png" id="49_ta48a"]
+[ext_resource type="Texture2D" uid="uid://cgplnt366tjyr" path="res://Arts/character/knife/move/survivor-move_knife_14.png" id="50_w1i7r"]
+[ext_resource type="Texture2D" uid="uid://dwxs4ohdhrfll" path="res://Arts/character/knife/move/survivor-move_knife_15.png" id="51_3pngb"]
+[ext_resource type="Texture2D" uid="uid://3l35lw37f4a3" path="res://Arts/character/knife/move/survivor-move_knife_16.png" id="52_7hmyq"]
+[ext_resource type="Texture2D" uid="uid://dy1lqu2nisget" path="res://Arts/character/knife/move/survivor-move_knife_17.png" id="53_ybtac"]
+[ext_resource type="Texture2D" uid="uid://kldy847d0fm5" path="res://Arts/character/knife/move/survivor-move_knife_18.png" id="54_35b4s"]
+[ext_resource type="Texture2D" uid="uid://bch0unjr8jghc" path="res://Arts/character/knife/move/survivor-move_knife_19.png" id="55_fsn4p"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_pa8wb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_081be")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_488va")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_6mwij")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ukkf7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_8fkrd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_2o2q7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_yiefc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_huyd2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_4kmpl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_embta")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_31klu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_ckk2v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_kcv7j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_fgh33")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_td3fh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_4tyvu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_efrv4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_ixaty")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_yqehv")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("21_j032h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_ow2m6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_rpccp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_1xfka")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_87u1d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_bu7mo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_3lel1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_o635g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_mjc7j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_nbnru")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_6e613")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_2e4bq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_te03l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_81oms")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_xjh3m")
+}],
+"loop": true,
+"name": &"melee_attack",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("36_1uxcg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_m3ysx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_qqe5r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_q4xt1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_8lb5p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_uf58q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_qbnv3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43_k1fa6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_wcyxr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_5nk1h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("46_yr1j1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("47_gcayv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("48_okvov")
+}, {
+"duration": 1.0,
+"texture": ExtResource("49_ta48a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("50_w1i7r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("51_3pngb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("52_7hmyq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("53_ybtac")
+}, {
+"duration": 1.0,
+"texture": ExtResource("54_35b4s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("55_fsn4p")
+}],
+"loop": true,
+"name": &"move",
+"speed": 25.0
+}]

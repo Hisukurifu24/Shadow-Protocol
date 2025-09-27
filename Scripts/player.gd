@@ -19,21 +19,26 @@ enum BodyState {
 @export var speed: float = 300.0
 @export var sprint_multiplier: float = 1.5
 
-const BULLET := preload("res://scenes/Bullet.tscn")
 @onready var muzzle: Node2D = $Muzzle
 @onready var feet_sprite: AnimatedSprite2D = $FeetSprite
 @onready var body_sprite: AnimatedSprite2D = $BodySprite
 
-@export var fire_rate: float = 8.0 # bullets per second
-@export var rotation_speed: float = 5.0 # rotation speed multiplier
-@export var shoot_animation_duration: float = 0.3 # duration of shoot animation in seconds
-@export var aim_tolerance: float = 0.1 # how close rotation needs to be to mouse direction (in radians)
+## rotation speed multiplier
+@export var rotation_speed: float = 5.0
+## how close rotation needs to snap to mouse direction (in radians)
+@export var aim_tolerance: float = 0.1
 
 # Ammo and reload system
-@export var max_magazine_size: int = 30 # bullets per magazine
-@export var total_ammo: int = 150 # total spare ammo
-var current_ammo: int = 30 # current bullets in magazine
 var _is_reloading: bool = false
+
+var inventory: Dictionary = {
+	"pistol_ammo": 0,
+	"rifle_ammo": 0,
+	"shotgun_ammo": 0
+	# TODO: Add more items like medkits, grenades, etc. 
+}
+var slots: Array[Weapon] = [null, null, null] # Three weapon slots
+var current_weapon_slot: int = 0
 
 var _cooldown := 0.0
 var _is_shooting := false
@@ -48,8 +53,11 @@ var previous_player_state: PlayerState = PlayerState.IDLE
 var previous_body_state: BodyState = BodyState.IDLE
 
 func _ready() -> void:
-	# Initialize ammo
-	current_ammo = max_magazine_size
+	# DEBUG
+	# Give player some starting ammo and a rifle
+	slots[0] = load("res://Resources/Weapons/BaseRifle.tres")
+	equip_weapon(0)
+	inventory["rifle_ammo"] = 90
 	
 	# Connect animation finished signal
 	body_sprite.animation_finished.connect(_on_animation_finished)
@@ -103,27 +111,30 @@ func _physics_process(delta: float) -> void:
 	_update_animations()
 
 	# Handle reload input
-	if Input.is_action_just_pressed("reload") and not _is_reloading and current_ammo < max_magazine_size and total_ammo > 0:
+	if Input.is_action_just_pressed("reload") and not _is_reloading and slots[current_weapon_slot] != null and get_current_weapon_ammo() > 0:
 		_start_reload()
 
 	# Handle shooting
 	_cooldown = max(0.0, _cooldown - delta)
 	if Input.is_action_pressed("shoot") and _cooldown == 0.0 and not _is_reloading:
-		if current_ammo > 0:
+		if slots[current_weapon_slot].current_ammo > 0:
 			_is_shooting = true
-			_shoot_timer = shoot_animation_duration
+			var frame_count = body_sprite.sprite_frames.get_frame_count("shoot")
+			var animation_speed = body_sprite.sprite_frames.get_animation_speed("shoot")
+			_shoot_timer = frame_count / animation_speed
 			shoot()
-			_cooldown = 1.0 / fire_rate
-			current_ammo -= 1
+			_cooldown = 1.0 / slots[current_weapon_slot].fire_rate
+			slots[current_weapon_slot].current_ammo -= 1
 			# Debug: Print ammo status when shooting
-			if current_ammo % 5 == 0 or current_ammo <= 5: # Print every 5 shots or when low
-				print("Ammo: " + str(current_ammo) + "/" + str(max_magazine_size) + " (Total: " + str(total_ammo) + ")")
-		elif total_ammo > 0:
+			if slots[current_weapon_slot].current_ammo % 5 == 0 or slots[current_weapon_slot].current_ammo <= 5: # Print every 5 shots or when low
+				print("Ammo: " + str(slots[current_weapon_slot].current_ammo) + "/" + str(slots[current_weapon_slot].magazine_size) + " (Total: " + str(get_current_weapon_ammo()) + ")")
+		elif get_current_weapon_ammo() > 0:
 			# Auto-reload when trying to shoot with empty magazine
 			_start_reload()
 
+## Shoot 1 bullet
 func shoot() -> void:
-	var b := BULLET.instantiate()
+	var b := slots[current_weapon_slot].bullet_scene.instantiate()
 	var target := get_global_mouse_position()
 	var direction_to_mouse := (target - muzzle.global_position).normalized()
 	var target_angle := direction_to_mouse.angle()
@@ -145,24 +156,24 @@ func shoot() -> void:
 	get_tree().current_scene.add_child(b)
 
 func _start_reload() -> void:
-	if _is_reloading or total_ammo <= 0:
+	if _is_reloading or get_current_weapon_ammo() <= 0:
 		return
 	
 	_is_reloading = true
-	print("Reloading... - Current: " + str(current_ammo) + "/" + str(max_magazine_size) + " Total: " + str(total_ammo))
+	print("Reloading... - Current: " + str(slots[current_weapon_slot].current_ammo) + "/" + str(slots[current_weapon_slot].magazine_size) + " Total: " + str(get_current_weapon_ammo()) + ")")
 
 func _finish_reload() -> void:
 	_is_reloading = false
 	
 	# Calculate how many bullets to reload
-	var bullets_needed = max_magazine_size - current_ammo
-	var bullets_to_reload = min(bullets_needed, total_ammo)
+	var bullets_needed = slots[current_weapon_slot].magazine_size - slots[current_weapon_slot].current_ammo
+	var bullets_to_reload = min(bullets_needed, get_current_weapon_ammo())
 	
 	# Update ammo counts
-	current_ammo += bullets_to_reload
-	total_ammo -= bullets_to_reload
-	
-	print("Reload complete! Ammo: " + str(current_ammo) + "/" + str(max_magazine_size) + " (Total: " + str(total_ammo) + ")")
+	slots[current_weapon_slot].current_ammo += bullets_to_reload
+	set_current_weapon_ammo(get_current_weapon_ammo() - bullets_to_reload)
+
+	print("Reload complete! Ammo: " + str(slots[current_weapon_slot].current_ammo) + "/" + str(slots[current_weapon_slot].magazine_size) + " (Total: " + str(get_current_weapon_ammo()) + ")")
 
 func _on_animation_finished() -> void:
 	# Check if the finished animation was "reload"
@@ -227,10 +238,31 @@ func _update_animations() -> void:
 		
 		previous_player_state = current_player_state
 
-func get_ammo_info() -> Dictionary:
-	return {
-		"current_ammo": current_ammo,
-		"max_magazine": max_magazine_size,
-		"total_ammo": total_ammo,
-		"is_reloading": _is_reloading
-	}
+
+func get_current_weapon_ammo() -> int:
+	var weapon_type = _get_weapon_type_string(slots[current_weapon_slot].type)
+	return inventory[weapon_type + "_ammo"]
+
+func set_current_weapon_ammo(amount: int) -> void:
+	var weapon_type = _get_weapon_type_string(slots[current_weapon_slot].type)
+	inventory[weapon_type + "_ammo"] = amount
+
+func _get_weapon_type_string(weapon_type: Weapon.WeaponType) -> String:
+	match weapon_type:
+		Weapon.WeaponType.PISTOL:
+			return "pistol"
+		Weapon.WeaponType.RIFLE:
+			return "rifle"
+		Weapon.WeaponType.SHOTGUN:
+			return "shotgun"
+		_:
+			return "pistol" # fallback
+
+func equip_weapon(slot_index: int) -> void:
+	if slot_index < 0 or slot_index >= slots.size():
+		return
+	if slots[slot_index] == null:
+		return
+	
+	current_weapon_slot = slot_index
+	body_sprite.sprite_frames = load("res://Resources/Sprite Frames/" + _get_weapon_type_string(slots[current_weapon_slot].type) + ".tres")

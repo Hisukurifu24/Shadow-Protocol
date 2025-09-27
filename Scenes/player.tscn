@@ -82,7 +82,7 @@
 [ext_resource type="Texture2D" uid="uid://b0a3y0qe3wjpr" path="res://Arts/character/feet/walk/survivor-walk_17.png" id="80_g3j25"]
 [ext_resource type="Texture2D" uid="uid://dfmh0j7fvttft" path="res://Arts/character/feet/walk/survivor-walk_18.png" id="81_conkd"]
 [ext_resource type="Texture2D" uid="uid://6srhk6125qv0" path="res://Arts/character/feet/walk/survivor-walk_19.png" id="82_8vg0g"]
-[ext_resource type="SpriteFrames" uid="uid://cryg67kowhmcf" path="res://Resources/Sprite Frames/rifle.tres" id="83_f1uaf"]
+[ext_resource type="SpriteFrames" uid="uid://oww8yciytgs1" path="res://Resources/Sprite Frames/pistol.tres" id="83_f1uaf"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xirkt"]
 animations = [{
@@ -371,7 +371,7 @@ frame_progress = 1.0
 [node name="BodySprite" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.125604, 0.125604)
 sprite_frames = ExtResource("83_f1uaf")
-animation = &"idle"
+animation = &"shoot"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

@@ -1,0 +1,240 @@
+[gd_resource type="SpriteFrames" load_steps=56 format=3 uid="uid://qx08g1tlhw3l"]
+
+[ext_resource type="Texture2D" uid="uid://kyg3tpgi6yr6" path="res://Arts/character/flashlight/idle/survivor-idle_flashlight_0.png" id="1_pwyc6"]
+[ext_resource type="Texture2D" uid="uid://rtki0hd165kh" path="res://Arts/character/flashlight/meleeattack/survivor-meleeattack_flashlight_0.png" id="2_a0phk"]
+[ext_resource type="Texture2D" uid="uid://d4crwhfgdnqmr" path="res://Arts/character/flashlight/idle/survivor-idle_flashlight_1.png" id="2_yxfkd"]
+[ext_resource type="Texture2D" uid="uid://c1esxgnu7cb10" path="res://Arts/character/flashlight/idle/survivor-idle_flashlight_2.png" id="3_fgpi3"]
+[ext_resource type="Texture2D" uid="uid://dm2holorak433" path="res://Arts/character/flashlight/meleeattack/survivor-meleeattack_flashlight_1.png" id="3_uvvk0"]
+[ext_resource type="Texture2D" uid="uid://bqe605f1fkfau" path="res://Arts/character/flashlight/meleeattack/survivor-meleeattack_flashlight_2.png" id="4_7hpfh"]
+[ext_resource type="Texture2D" uid="uid://dah1cec5agifw" path="res://Arts/character/flashlight/idle/survivor-idle_flashlight_3.png" id="4_koe24"]
+[ext_resource type="Texture2D" uid="uid://dml3j8dtf0koc" path="res://Arts/character/flashlight/meleeattack/survivor-meleeattack_flashlight_3.png" id="5_8hoaw"]
+[ext_resource type="Texture2D" uid="uid://xtr65nhg15y4" path="res://Arts/character/flashlight/idle/survivor-idle_flashlight_4.png" id="5_ngyls"]
+[ext_resource type="Texture2D" uid="uid://boyc2i2nyeiir" path="res://Arts/character/flashlight/meleeattack/survivor-meleeattack_flashlight_4.png" id="6_ir4dr"]
+[ext_resource type="Texture2D" uid="uid://dc08p2r07ug4y" path="res://Arts/character/flashlight/idle/survivor-idle_flashlight_5.png" id="6_qin6s"]
+[ext_resource type="Texture2D" uid="uid://cn24hotvek7wn" path="res://Arts/character/flashlight/idle/survivor-idle_flashlight_6.png" id="7_05qb5"]
+[ext_resource type="Texture2D" uid="uid://bnmdarp5h5w2q" path="res://Arts/character/flashlight/meleeattack/survivor-meleeattack_flashlight_5.png" id="7_hgi7c"]
+[ext_resource type="Texture2D" uid="uid://c8oa0xpghv65i" path="res://Arts/character/flashlight/meleeattack/survivor-meleeattack_flashlight_6.png" id="8_anh16"]
+[ext_resource type="Texture2D" uid="uid://dkifs0qjvocc4" path="res://Arts/character/flashlight/idle/survivor-idle_flashlight_7.png" id="8_winc7"]
+[ext_resource type="Texture2D" uid="uid://bf6wrsd7b2ssm" path="res://Arts/character/flashlight/idle/survivor-idle_flashlight_8.png" id="9_4ng3e"]
+[ext_resource type="Texture2D" uid="uid://mdphhb12fgq8" path="res://Arts/character/flashlight/meleeattack/survivor-meleeattack_flashlight_7.png" id="9_5ioms"]
+[ext_resource type="Texture2D" uid="uid://cclpwpa71m5th" path="res://Arts/character/flashlight/idle/survivor-idle_flashlight_9.png" id="10_nmpc8"]
+[ext_resource type="Texture2D" uid="uid://cuj0vc4oaokyr" path="res://Arts/character/flashlight/meleeattack/survivor-meleeattack_flashlight_8.png" id="10_yhip5"]
+[ext_resource type="Texture2D" uid="uid://cue7c5n6ph3v4" path="res://Arts/character/flashlight/meleeattack/survivor-meleeattack_flashlight_9.png" id="11_2pp4e"]
+[ext_resource type="Texture2D" uid="uid://hnsq6ani01aw" path="res://Arts/character/flashlight/idle/survivor-idle_flashlight_10.png" id="11_317e4"]
+[ext_resource type="Texture2D" uid="uid://b16mgb4207shx" path="res://Arts/character/flashlight/meleeattack/survivor-meleeattack_flashlight_10.png" id="12_5rib1"]
+[ext_resource type="Texture2D" uid="uid://fs3kpnqanbwf" path="res://Arts/character/flashlight/idle/survivor-idle_flashlight_11.png" id="12_bmln1"]
+[ext_resource type="Texture2D" uid="uid://cbqvliepb2qff" path="res://Arts/character/flashlight/idle/survivor-idle_flashlight_12.png" id="13_aqh2q"]
+[ext_resource type="Texture2D" uid="uid://bcugim0lrmldd" path="res://Arts/character/flashlight/meleeattack/survivor-meleeattack_flashlight_11.png" id="13_cmkd0"]
+[ext_resource type="Texture2D" uid="uid://dd5cibc64h2on" path="res://Arts/character/flashlight/idle/survivor-idle_flashlight_13.png" id="14_7ay3w"]
+[ext_resource type="Texture2D" uid="uid://bm8srhr7mcsab" path="res://Arts/character/flashlight/meleeattack/survivor-meleeattack_flashlight_12.png" id="14_23dds"]
+[ext_resource type="Texture2D" uid="uid://bj11v8g42dody" path="res://Arts/character/flashlight/meleeattack/survivor-meleeattack_flashlight_13.png" id="15_a0t2p"]
+[ext_resource type="Texture2D" uid="uid://ituk30r3455m" path="res://Arts/character/flashlight/idle/survivor-idle_flashlight_14.png" id="15_kmfha"]
+[ext_resource type="Texture2D" uid="uid://dhtgilg0v3bn" path="res://Arts/character/flashlight/meleeattack/survivor-meleeattack_flashlight_14.png" id="16_ooddw"]
+[ext_resource type="Texture2D" uid="uid://b2wl5h256jwyj" path="res://Arts/character/flashlight/idle/survivor-idle_flashlight_15.png" id="16_yiuo8"]
+[ext_resource type="Texture2D" uid="uid://b4vosjaqtfvm7" path="res://Arts/character/flashlight/idle/survivor-idle_flashlight_16.png" id="17_ir3nu"]
+[ext_resource type="Texture2D" uid="uid://dvnsfnnqccuvo" path="res://Arts/character/flashlight/move/survivor-move_flashlight_0.png" id="17_qpch2"]
+[ext_resource type="Texture2D" uid="uid://ea5wckh4wq6x" path="res://Arts/character/flashlight/move/survivor-move_flashlight_1.png" id="18_p6v7x"]
+[ext_resource type="Texture2D" uid="uid://q4telut8a1te" path="res://Arts/character/flashlight/idle/survivor-idle_flashlight_17.png" id="18_qvj4s"]
+[ext_resource type="Texture2D" uid="uid://dr1eh6ycbs5kc" path="res://Arts/character/flashlight/move/survivor-move_flashlight_2.png" id="19_oupb0"]
+[ext_resource type="Texture2D" uid="uid://cqtohkmda2abe" path="res://Arts/character/flashlight/idle/survivor-idle_flashlight_18.png" id="19_xwr43"]
+[ext_resource type="Texture2D" uid="uid://tqro5fsnkocl" path="res://Arts/character/flashlight/idle/survivor-idle_flashlight_19.png" id="20_dpmcb"]
+[ext_resource type="Texture2D" uid="uid://ct8u7obxol2sb" path="res://Arts/character/flashlight/move/survivor-move_flashlight_3.png" id="20_yxfkd"]
+[ext_resource type="Texture2D" uid="uid://cw3jk5uwsbv8y" path="res://Arts/character/flashlight/move/survivor-move_flashlight_4.png" id="21_fgpi3"]
+[ext_resource type="Texture2D" uid="uid://vthj117lmjgl" path="res://Arts/character/flashlight/move/survivor-move_flashlight_5.png" id="22_koe24"]
+[ext_resource type="Texture2D" uid="uid://e8d1k8c3hsgk" path="res://Arts/character/flashlight/move/survivor-move_flashlight_6.png" id="23_ngyls"]
+[ext_resource type="Texture2D" uid="uid://bbcslp2tdqnlt" path="res://Arts/character/flashlight/move/survivor-move_flashlight_7.png" id="24_qin6s"]
+[ext_resource type="Texture2D" uid="uid://bpqgeuckl74ek" path="res://Arts/character/flashlight/move/survivor-move_flashlight_8.png" id="25_05qb5"]
+[ext_resource type="Texture2D" uid="uid://cxphmxj381jad" path="res://Arts/character/flashlight/move/survivor-move_flashlight_9.png" id="26_winc7"]
+[ext_resource type="Texture2D" uid="uid://gqwlj7ae3tln" path="res://Arts/character/flashlight/move/survivor-move_flashlight_10.png" id="27_4ng3e"]
+[ext_resource type="Texture2D" uid="uid://brhd2uri78ww1" path="res://Arts/character/flashlight/move/survivor-move_flashlight_11.png" id="28_nmpc8"]
+[ext_resource type="Texture2D" uid="uid://cs2780u822v38" path="res://Arts/character/flashlight/move/survivor-move_flashlight_12.png" id="29_317e4"]
+[ext_resource type="Texture2D" uid="uid://bujva0alusl74" path="res://Arts/character/flashlight/move/survivor-move_flashlight_13.png" id="30_bmln1"]
+[ext_resource type="Texture2D" uid="uid://cjb8buledtvuh" path="res://Arts/character/flashlight/move/survivor-move_flashlight_14.png" id="31_aqh2q"]
+[ext_resource type="Texture2D" uid="uid://btpl5tf8fo66f" path="res://Arts/character/flashlight/move/survivor-move_flashlight_15.png" id="32_7ay3w"]
+[ext_resource type="Texture2D" uid="uid://bwues1vk8pv11" path="res://Arts/character/flashlight/move/survivor-move_flashlight_16.png" id="33_kmfha"]
+[ext_resource type="Texture2D" uid="uid://c8r0u0a2nduqj" path="res://Arts/character/flashlight/move/survivor-move_flashlight_17.png" id="34_yiuo8"]
+[ext_resource type="Texture2D" uid="uid://c8qty8ur8i0oe" path="res://Arts/character/flashlight/move/survivor-move_flashlight_18.png" id="35_ir3nu"]
+[ext_resource type="Texture2D" uid="uid://0shil3uyq26k" path="res://Arts/character/flashlight/move/survivor-move_flashlight_19.png" id="36_qvj4s"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_pwyc6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_yxfkd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_fgpi3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_koe24")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ngyls")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_qin6s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_05qb5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_winc7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_4ng3e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_nmpc8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_317e4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_bmln1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_aqh2q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_7ay3w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_kmfha")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_yiuo8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_ir3nu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_qvj4s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_xwr43")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_dpmcb")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_a0phk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_uvvk0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_7hpfh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_8hoaw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ir4dr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_hgi7c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_anh16")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_5ioms")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_yhip5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_2pp4e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_5rib1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_cmkd0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_23dds")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_a0t2p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_ooddw")
+}],
+"loop": true,
+"name": &"melee_attack",
+"speed": 25.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("17_qpch2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_p6v7x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_oupb0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_yxfkd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_fgpi3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_koe24")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_ngyls")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_qin6s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_05qb5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_winc7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_4ng3e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_nmpc8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_317e4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_bmln1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_aqh2q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_7ay3w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_kmfha")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_yiuo8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_ir3nu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_qvj4s")
+}],
+"loop": true,
+"name": &"move",
+"speed": 20.0
+}]
