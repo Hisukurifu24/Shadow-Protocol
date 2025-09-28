@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="Weapon" load_steps=5 format=3 uid="uid://dn8a6vh88bqiw"]
+
+[ext_resource type="PackedScene" uid="uid://cjaotaxjq3hf" path="res://Scenes/bullet.tscn" id="1_pxgdt"]
+[ext_resource type="Script" uid="uid://calnw065pbolm" path="res://Scripts/Resources/Weapon.gd" id="2_ltcol"]
+[ext_resource type="Texture2D" uid="uid://0uer8hv68xhj" path="res://Arts/Guns/Spritesheet/spritesheet.png" id="3_qmyoq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xxoqn"]
+atlas = ExtResource("3_qmyoq")
+region = Rect2(177, 8, 104, 83)
+
+[resource]
+script = ExtResource("2_ltcol")
+name = "Base Pistol"
+sprite = SubResource("AtlasTexture_xxoqn")
+type = 0
+damage = 10
+fire_rate = 2.0
+reload_time = 1.0
+magazine_size = 12
+bullet_speed = 600.0
+bullet_scene = ExtResource("1_pxgdt")
+metadata/_custom_type_script = "uid://calnw065pbolm"
