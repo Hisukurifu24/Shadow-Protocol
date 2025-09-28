@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Player
 
 # Animation state enums
 enum PlayerState {
@@ -13,8 +14,17 @@ enum BodyState {
 	IDLE,
 	MOVING,
 	SHOOTING,
+	MELEE_ATTACKING,
 	RELOADING
 }
+
+# Signals for shooting and reloading
+signal fired
+signal reload_started
+signal reload_finished
+
+signal weapon_changed(new_weapon: Weapon)
+signal aim_state_changed(is_lerping: bool)
 
 @export var speed: float = 300.0
 @export var sprint_multiplier: float = 1.5
@@ -22,11 +32,15 @@ enum BodyState {
 @onready var muzzle: Node2D = $Muzzle
 @onready var feet_sprite: AnimatedSprite2D = $FeetSprite
 @onready var body_sprite: AnimatedSprite2D = $BodySprite
+@onready var melee_area: Area2D = %MeleeRange
 
 ## rotation speed multiplier
 @export var rotation_speed: float = 5.0
 ## how close rotation needs to snap to mouse direction (in radians)
 @export var aim_tolerance: float = 0.1
+
+var _is_lerping_aim: bool = false
+var _previous_lerp_state: bool = false
 
 # Ammo and reload system
 var _is_reloading: bool = false
@@ -45,6 +59,13 @@ var _is_shooting := false
 var _shoot_timer := 0.0
 
 var _is_sprinting := false
+var _is_aiming_with_mouse: bool = true
+
+var _is_melee_attacking: bool = false
+
+# Cached analog stick input to avoid duplicate reads
+var _cached_rotation_input: Vector2
+var _rotation_input_frame: int = -1
 
 # Animation state tracking
 var current_player_state: PlayerState = PlayerState.IDLE
@@ -55,12 +76,23 @@ var previous_body_state: BodyState = BodyState.IDLE
 func _ready() -> void:
 	# DEBUG
 	# Give player some starting ammo and a rifle
-	slots[0] = load("res://Resources/Weapons/BaseRifle.tres")
-	equip_weapon(0)
+	pick_up_weapon(load("res://Resources/Weapons/BaseRifle.tres"))
+	pick_up_weapon(load("res://Resources/Weapons/BasePistol.tres"))
 	inventory["rifle_ammo"] = 90
+	inventory["pistol_ammo"] = 60
 	
 	# Connect animation finished signal
 	body_sprite.animation_finished.connect(_on_animation_finished)
+	melee_area.body_entered.connect(_on_melee_body_entered)
+
+## Get analog stick input, cached per frame to avoid duplicate reads
+func _get_rotation_input() -> Vector2:
+	var current_frame = Engine.get_process_frames()
+	if _rotation_input_frame != current_frame:
+		_cached_rotation_input.x = Input.get_joy_axis(0, JOY_AXIS_RIGHT_X)
+		_cached_rotation_input.y = Input.get_joy_axis(0, JOY_AXIS_RIGHT_Y)
+		_rotation_input_frame = current_frame
+	return _cached_rotation_input
 
 func _physics_process(delta: float) -> void:
 	# Handle shoot animation timer
@@ -71,8 +103,8 @@ func _physics_process(delta: float) -> void:
 
 	# Get input direction
 	var input_direction = Vector2()
-	
-	# Check for WASD input
+
+	# Check for movement input
 	if Input.is_action_pressed("moveLeft"):
 		input_direction.x -= 1
 	if Input.is_action_pressed("moveRight"):
@@ -82,10 +114,8 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("moveDown"):
 		input_direction.y += 1
 	
-	if Input.is_action_pressed("sprint"):
-		_is_sprinting = true
-	else:
-		_is_sprinting = false
+	_is_sprinting = Input.is_action_pressed("sprint")
+	# TODO: sprint last some seconds, then it goes on cooldown
 	
 	
 	if input_direction.length() > 0:
@@ -97,11 +127,38 @@ func _physics_process(delta: float) -> void:
 		velocity = Vector2.ZERO
 	
 
-	# Rotate player towards mouse position smoothly
-	var mouse_position = get_global_mouse_position()
-	var direction_to_mouse = (mouse_position - global_position).normalized()
-	var target_angle = direction_to_mouse.angle()
-	rotation = lerp_angle(rotation, target_angle, rotation_speed * delta)
+	# Handle rotation input (right analog stick or mouse)
+	var rotation_input = _get_rotation_input()
+	var target_angle: float
+
+	# Determine if aiming with mouse
+	
+	if Input.get_last_mouse_velocity().length() > 0.1:
+		_is_aiming_with_mouse = true
+	
+	if rotation_input.length() > 0.1: # Deadzone for analog stick
+		# Hide cursor:
+		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+		_is_aiming_with_mouse = false
+		# Use right analog stick for rotation
+		target_angle = rotation_input.angle()
+		rotation = lerp_angle(rotation, target_angle, rotation_speed * delta)
+	elif _is_aiming_with_mouse:
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		
+		# Fall back to mouse rotation when no analog stick input
+		var mouse_position = get_global_mouse_position()
+		var direction_to_mouse = (mouse_position - global_position).normalized()
+		target_angle = direction_to_mouse.angle()
+		rotation = lerp_angle(rotation, target_angle, rotation_speed * delta)
+	
+	var angle_diff = abs(angle_difference(rotation, target_angle))
+	_is_lerping_aim = angle_diff > aim_tolerance
+
+	# Emit signal when aim state changes
+	if _is_lerping_aim != _previous_lerp_state:
+		aim_state_changed.emit(_is_lerping_aim)
+		_previous_lerp_state = _is_lerping_aim
 
 	# Move the character
 	move_and_slide()
@@ -111,13 +168,13 @@ func _physics_process(delta: float) -> void:
 	_update_animations()
 
 	# Handle reload input
-	if Input.is_action_just_pressed("reload") and not _is_reloading and slots[current_weapon_slot] != null and get_current_weapon_ammo() > 0:
+	if Input.is_action_just_pressed("reload") and not _is_reloading and not _is_melee_attacking and slots[current_weapon_slot] != null and get_current_weapon_ammo() > 0:
 		_start_reload()
 
 	# Handle shooting
 	_cooldown = max(0.0, _cooldown - delta)
-	if Input.is_action_pressed("shoot") and _cooldown == 0.0 and not _is_reloading:
-		if slots[current_weapon_slot].current_ammo > 0:
+	if Input.is_action_pressed("shoot") and _cooldown == 0.0 and not _is_reloading and not _is_melee_attacking:
+		if slots[current_weapon_slot] and slots[current_weapon_slot].current_ammo > 0:
 			_is_shooting = true
 			var frame_count = body_sprite.sprite_frames.get_frame_count("shoot")
 			var animation_speed = body_sprite.sprite_frames.get_animation_speed("shoot")
@@ -125,27 +182,50 @@ func _physics_process(delta: float) -> void:
 			shoot()
 			_cooldown = 1.0 / slots[current_weapon_slot].fire_rate
 			slots[current_weapon_slot].current_ammo -= 1
-			# Debug: Print ammo status when shooting
-			if slots[current_weapon_slot].current_ammo % 5 == 0 or slots[current_weapon_slot].current_ammo <= 5: # Print every 5 shots or when low
-				print("Ammo: " + str(slots[current_weapon_slot].current_ammo) + "/" + str(slots[current_weapon_slot].magazine_size) + " (Total: " + str(get_current_weapon_ammo()) + ")")
+			fired.emit()
 		elif get_current_weapon_ammo() > 0:
 			# Auto-reload when trying to shoot with empty magazine
 			_start_reload()
 
+	## Handle weapon switching
+	if Input.is_action_just_pressed("equip1"):
+		equip_weapon(0)
+	if Input.is_action_just_pressed("equip2"):
+		equip_weapon(1)
+	if Input.is_action_just_pressed("equip3"):
+		equip_weapon(2)
+
+	if Input.is_action_just_pressed("melee_attack"):
+		# Cancel reload if currently reloading
+		if _is_reloading:
+			reload_finished.emit()
+			_is_reloading = false
+		_is_melee_attacking = true
+
 ## Shoot 1 bullet
 func shoot() -> void:
 	var b := slots[current_weapon_slot].bullet_scene.instantiate()
-	var target := get_global_mouse_position()
-	var direction_to_mouse := (target - muzzle.global_position).normalized()
-	var target_angle := direction_to_mouse.angle()
 	
-	# Check if player is properly aimed at the mouse
+	# Use cached rotation input to avoid duplicate reads
+	var rotation_input = _get_rotation_input()
+	var target_angle: float
+	var aiming_direction: Vector2
+	
+	if rotation_input.length() > 0.1: # Using analog stick
+		target_angle = rotation_input.angle()
+		aiming_direction = rotation_input.normalized()
+	else: # Fall back to mouse
+		var target := get_global_mouse_position()
+		aiming_direction = (target - muzzle.global_position).normalized()
+		target_angle = aiming_direction.angle()
+	
+	# Check if player is properly aimed
 	var angle_diff: float = abs(angle_difference(rotation, target_angle))
 	
 	var bullet_direction: Vector2
 	if angle_diff <= aim_tolerance:
-		# Player is properly aimed - shoot towards mouse
-		bullet_direction = direction_to_mouse
+		# Player is properly aimed - shoot towards target direction
+		bullet_direction = aiming_direction
 	else:
 		# Player not fully rotated - shoot in current facing direction
 		bullet_direction = Vector2.RIGHT.rotated(rotation)
@@ -156,11 +236,11 @@ func shoot() -> void:
 	get_tree().current_scene.add_child(b)
 
 func _start_reload() -> void:
-	if _is_reloading or get_current_weapon_ammo() <= 0:
+	if _is_reloading:
 		return
 	
+	reload_started.emit()
 	_is_reloading = true
-	print("Reloading... - Current: " + str(slots[current_weapon_slot].current_ammo) + "/" + str(slots[current_weapon_slot].magazine_size) + " Total: " + str(get_current_weapon_ammo()) + ")")
 
 func _finish_reload() -> void:
 	_is_reloading = false
@@ -173,12 +253,14 @@ func _finish_reload() -> void:
 	slots[current_weapon_slot].current_ammo += bullets_to_reload
 	set_current_weapon_ammo(get_current_weapon_ammo() - bullets_to_reload)
 
-	print("Reload complete! Ammo: " + str(slots[current_weapon_slot].current_ammo) + "/" + str(slots[current_weapon_slot].magazine_size) + " (Total: " + str(get_current_weapon_ammo()) + ")")
+	reload_finished.emit()
 
 func _on_animation_finished() -> void:
 	# Check if the finished animation was "reload"
 	if body_sprite.animation == "reload" and _is_reloading:
 		_finish_reload()
+	if body_sprite.animation == "melee_attack" and _is_melee_attacking:
+		_is_melee_attacking = false
 
 func _update_player_states() -> void:
 	# Determine body state (higher priority)
@@ -186,6 +268,8 @@ func _update_player_states() -> void:
 		current_body_state = BodyState.RELOADING
 	elif _is_shooting:
 		current_body_state = BodyState.SHOOTING
+	elif _is_melee_attacking:
+		current_body_state = BodyState.MELEE_ATTACKING
 	elif velocity.length() > 0:
 		current_body_state = BodyState.MOVING
 	else:
@@ -217,6 +301,8 @@ func _update_animations() -> void:
 				body_sprite.play("move")
 			BodyState.SHOOTING:
 				body_sprite.play("shoot")
+			BodyState.MELEE_ATTACKING:
+				body_sprite.play("melee_attack")
 			BodyState.RELOADING:
 				body_sprite.play("reload")
 		
@@ -240,10 +326,14 @@ func _update_animations() -> void:
 
 
 func get_current_weapon_ammo() -> int:
+	if slots[current_weapon_slot] == null:
+		return 0
 	var weapon_type = _get_weapon_type_string(slots[current_weapon_slot].type)
 	return inventory[weapon_type + "_ammo"]
 
 func set_current_weapon_ammo(amount: int) -> void:
+	if slots[current_weapon_slot] == null:
+		return
 	var weapon_type = _get_weapon_type_string(slots[current_weapon_slot].type)
 	inventory[weapon_type + "_ammo"] = amount
 
@@ -256,13 +346,38 @@ func _get_weapon_type_string(weapon_type: Weapon.WeaponType) -> String:
 		Weapon.WeaponType.SHOTGUN:
 			return "shotgun"
 		_:
-			return "pistol" # fallback
+			return "" # fallback
 
 func equip_weapon(slot_index: int) -> void:
 	if slot_index < 0 or slot_index >= slots.size():
+		push_error("Invalid weapon slot index: %d" % slot_index)
 		return
-	if slots[slot_index] == null:
-		return
-	
+
 	current_weapon_slot = slot_index
-	body_sprite.sprite_frames = load("res://Resources/Sprite Frames/" + _get_weapon_type_string(slots[current_weapon_slot].type) + ".tres")
+
+	weapon_changed.emit(slots[current_weapon_slot])
+
+	if slots[slot_index] == null:
+		if inventory.has("knife"):
+			body_sprite.sprite_frames = load("res://Resources/Sprite Frames/knife.tres")
+		else:
+			body_sprite.sprite_frames = load("res://Resources/Sprite Frames/flashlight.tres")
+	else:
+		body_sprite.sprite_frames = load("res://Resources/Sprite Frames/" + _get_weapon_type_string(slots[current_weapon_slot].type) + ".tres")
+
+func pick_up_weapon(new_weapon: Weapon) -> bool:
+	# Check for empty slot first
+	for i in range(slots.size()):
+		if slots[i] == null:
+			slots[i] = new_weapon
+			equip_weapon(i)
+			return true
+
+	# No empty slots - replace current weapon
+	slots[current_weapon_slot] = new_weapon
+	equip_weapon(current_weapon_slot)
+	return true
+
+func _on_melee_body_entered(_body: Node) -> void:
+	if _is_melee_attacking:
+		pass # Handle melee hit logic here (e.g., apply damage to enemy)

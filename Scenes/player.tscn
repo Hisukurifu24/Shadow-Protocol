@@ -1,4 +1,4 @@
-[gd_scene load_steps=86 format=3 uid="uid://cgsb5awixwnhd"]
+[gd_scene load_steps=87 format=3 uid="uid://cgsb5awixwnhd"]
 
 [ext_resource type="Script" uid="uid://cpv0m6gay6cv" path="res://Scripts/player.gd" id="1_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://bxl7aeaohn1fl" path="res://Arts/character/feet/idle/survivor-idle_0.png" id="2_ho16k"]
@@ -358,6 +358,9 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_r7t2e"]
 radius = 9.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f1uaf"]
+size = Vector2(8, 20)
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_cvnsp")
 
@@ -371,8 +374,10 @@ frame_progress = 1.0
 [node name="BodySprite" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.125604, 0.125604)
 sprite_frames = ExtResource("83_f1uaf")
-animation = &"shoot"
+animation = &"melee_attack"
 autoplay = "idle"
+frame = 14
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-6, 2)
@@ -380,3 +385,10 @@ shape = SubResource("CircleShape2D_r7t2e")
 
 [node name="Muzzle" type="Node2D" parent="."]
 position = Vector2(23, 6)
+
+[node name="MeleeRange" type="Area2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(13, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MeleeRange"]
+shape = SubResource("RectangleShape2D_f1uaf")
