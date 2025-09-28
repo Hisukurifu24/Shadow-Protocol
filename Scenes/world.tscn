@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cgv81570vdjoh"]
+[gd_scene load_steps=5 format=3 uid="uid://cgv81570vdjoh"]
 
 [ext_resource type="PackedScene" uid="uid://cgsb5awixwnhd" path="res://Scenes/player.tscn" id="1_a02cp"]
 [ext_resource type="Texture2D" uid="uid://bxlm0soqoyta5" path="res://Arts/icon.svg" id="2_go701"]
+[ext_resource type="PackedScene" uid="uid://bxcdn2v1ffjm4" path="res://Scenes/ui.tscn" id="3_5a7ea"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_go701"]
 size = Vector2(128, 132)
@@ -10,20 +11,16 @@ size = Vector2(128, 132)
 
 [node name="Player" parent="." instance=ExtResource("1_a02cp")]
 position = Vector2(641, 285)
-speed = 300.0
-sprint_multiplier = 1.5
-rotation_speed = 5.0
-aim_tolerance = 0.1
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
 remote_path = NodePath("../../Camera2D")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(641, 285)
-zoom = Vector2(2, 2)
+zoom = Vector2(3, 3)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2(315, 125)
+position = Vector2(479, 135)
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
 texture = ExtResource("2_go701")
@@ -32,7 +29,8 @@ texture = ExtResource("2_go701")
 shape = SubResource("RectangleShape2D_go701")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
-position = Vector2(898, 173)
+position = Vector2(813, 193)
+scale = Vector2(0.5, 0.5)
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D2"]
 texture = ExtResource("2_go701")
@@ -41,10 +39,12 @@ texture = ExtResource("2_go701")
 shape = SubResource("RectangleShape2D_go701")
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="."]
-position = Vector2(517, 462)
+position = Vector2(549, 435)
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D3"]
 texture = ExtResource("2_go701")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
 shape = SubResource("RectangleShape2D_go701")
+
+[node name="UI" parent="." instance=ExtResource("3_5a7ea")]
