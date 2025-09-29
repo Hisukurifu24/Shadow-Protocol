@@ -35,7 +35,7 @@ signal aim_state_changed(is_lerping: bool)
 @onready var melee_area: Area2D = %MeleeRange
 
 ## rotation speed multiplier
-@export var rotation_speed: float = 5.0
+@export var rotation_speed: float = 10.0
 ## how close rotation needs to snap to mouse direction (in radians)
 @export var aim_tolerance: float = 0.1
 
@@ -78,8 +78,11 @@ func _ready() -> void:
 	# Give player some starting ammo and a rifle
 	pick_up_weapon(load("res://Resources/Weapons/BaseRifle.tres"))
 	pick_up_weapon(load("res://Resources/Weapons/BasePistol.tres"))
+	pick_up_weapon(load("res://Resources/Weapons/Knife.tres"))
+	pick_up_weapon(load("res://Resources/Weapons/BaseShotgun.tres"))
 	inventory["rifle_ammo"] = 90
 	inventory["pistol_ammo"] = 60
+	inventory["shotgun_ammo"] = 32
 	
 	# Connect animation finished signal
 	body_sprite.animation_finished.connect(_on_animation_finished)
@@ -168,24 +171,37 @@ func _physics_process(delta: float) -> void:
 	_update_animations()
 
 	# Handle reload input
-	if Input.is_action_just_pressed("reload") and not _is_reloading and not _is_melee_attacking and slots[current_weapon_slot] != null and get_current_weapon_ammo() > 0:
-		_start_reload()
+	if Input.is_action_just_pressed("reload"):
+		if not _is_reloading and not _is_melee_attacking and slots[current_weapon_slot] and get_current_weapon_ammo() > 0:
+			_start_reload()
+		elif _is_reloading and slots[current_weapon_slot] and slots[current_weapon_slot].type == Weapon.WeaponType.SHOTGUN:
+			# Allow interrupting shotgun reload
+			_interrupt_reload()
 
 	# Handle shooting
 	_cooldown = max(0.0, _cooldown - delta)
-	if Input.is_action_pressed("shoot") and _cooldown == 0.0 and not _is_reloading and not _is_melee_attacking:
-		if slots[current_weapon_slot] and slots[current_weapon_slot].current_ammo > 0:
-			_is_shooting = true
-			var frame_count = body_sprite.sprite_frames.get_frame_count("shoot")
-			var animation_speed = body_sprite.sprite_frames.get_animation_speed("shoot")
-			_shoot_timer = frame_count / animation_speed
-			shoot()
-			_cooldown = 1.0 / slots[current_weapon_slot].fire_rate
-			slots[current_weapon_slot].current_ammo -= 1
-			fired.emit()
-		elif get_current_weapon_ammo() > 0:
-			# Auto-reload when trying to shoot with empty magazine
-			_start_reload()
+	if Input.is_action_pressed("shoot") and _cooldown == 0.0 and not _is_melee_attacking:
+		# Check if we're reloading and have a shotgun - allow interrupting shotgun reload
+		if _is_reloading and slots[current_weapon_slot] and slots[current_weapon_slot].type == Weapon.WeaponType.SHOTGUN:
+			_interrupt_reload()
+		
+		if not _is_reloading:
+			# Check if we are using a melee weapon
+			if slots[current_weapon_slot] and slots[current_weapon_slot].type == Weapon.WeaponType.MELEE:
+				_is_melee_attacking = true
+			# Check if we have a weapon equipped and ammo in the magazine
+			elif slots[current_weapon_slot] and slots[current_weapon_slot].current_ammo > 0:
+				_is_shooting = true
+				var frame_count = body_sprite.sprite_frames.get_frame_count("shoot")
+				var animation_speed = body_sprite.sprite_frames.get_animation_speed("shoot")
+				_shoot_timer = frame_count / animation_speed
+				shoot()
+				_cooldown = 1.0 / slots[current_weapon_slot].fire_rate
+				slots[current_weapon_slot].current_ammo -= 1
+				fired.emit()
+			elif get_current_weapon_ammo() > 0:
+				# Auto-reload when trying to shoot with empty magazine
+				_start_reload()
 
 	## Handle weapon switching
 	if Input.is_action_just_pressed("equip1"):
@@ -198,14 +214,15 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("melee_attack"):
 		# Cancel reload if currently reloading
 		if _is_reloading:
-			reload_finished.emit()
-			_is_reloading = false
+			_interrupt_reload()
 		_is_melee_attacking = true
+
+func _interrupt_reload() -> void:
+	_is_reloading = false
+	reload_finished.emit()
 
 ## Shoot 1 bullet
 func shoot() -> void:
-	var b := slots[current_weapon_slot].bullet_scene.instantiate()
-	
 	# Use cached rotation input to avoid duplicate reads
 	var rotation_input = _get_rotation_input()
 	var target_angle: float
@@ -230,10 +247,22 @@ func shoot() -> void:
 		# Player not fully rotated - shoot in current facing direction
 		bullet_direction = Vector2.RIGHT.rotated(rotation)
 	
-	b.global_position = muzzle.global_position
-	b.direction = bullet_direction
-	b.rotation = bullet_direction.angle()
-	get_tree().current_scene.add_child(b)
+
+	if slots[current_weapon_slot].type == Weapon.WeaponType.SHOTGUN:
+		var pellet_count = 10
+		for i in range(pellet_count):
+			var p := slots[current_weapon_slot].bullet_scene.instantiate()
+			p.global_position = muzzle.global_position
+			p.direction = bullet_direction
+			p.rotation = bullet_direction.angle()
+			get_tree().current_scene.add_child(p)
+	else:
+		var b := slots[current_weapon_slot].bullet_scene.instantiate()
+
+		b.global_position = muzzle.global_position
+		b.direction = bullet_direction
+		b.rotation = bullet_direction.angle()
+		get_tree().current_scene.add_child(b)
 
 func _start_reload() -> void:
 	if _is_reloading:
@@ -243,17 +272,40 @@ func _start_reload() -> void:
 	_is_reloading = true
 
 func _finish_reload() -> void:
-	_is_reloading = false
-	
-	# Calculate how many bullets to reload
-	var bullets_needed = slots[current_weapon_slot].magazine_size - slots[current_weapon_slot].current_ammo
-	var bullets_to_reload = min(bullets_needed, get_current_weapon_ammo())
-	
-	# Update ammo counts
-	slots[current_weapon_slot].current_ammo += bullets_to_reload
-	set_current_weapon_ammo(get_current_weapon_ammo() - bullets_to_reload)
-
-	reload_finished.emit()
+	var bullets_to_reload: int
+	if slots[current_weapon_slot].type == Weapon.WeaponType.SHOTGUN:
+		# Shotguns reload one shell at a time
+		bullets_to_reload = min(1, get_current_weapon_ammo())
+		
+		# Update ammo counts
+		slots[current_weapon_slot].current_ammo += bullets_to_reload
+		set_current_weapon_ammo(get_current_weapon_ammo() - bullets_to_reload)
+		
+		# Check if we need to continue reloading (magazine not full and have ammo)
+		var magazine_full = slots[current_weapon_slot].current_ammo >= slots[current_weapon_slot].magazine_size
+		var has_ammo = get_current_weapon_ammo() > 0
+		
+		if not magazine_full and has_ammo:
+			# Continue reloading - play reload animation again
+			body_sprite.play("reload")
+			reload_started.emit()
+			return # Don't set _is_reloading to false or emit reload_finished yet
+		else:
+			# Magazine is full or no more ammo - finish reloading
+			_is_reloading = false
+			reload_finished.emit()
+	else:
+		# Calculate how many bullets to reload for non-shotgun weapons
+		var bullets_needed = slots[current_weapon_slot].magazine_size - slots[current_weapon_slot].current_ammo
+		bullets_to_reload = min(bullets_needed, get_current_weapon_ammo())
+		
+		# Update ammo counts
+		slots[current_weapon_slot].current_ammo += bullets_to_reload
+		set_current_weapon_ammo(get_current_weapon_ammo() - bullets_to_reload)
+		
+		# Finish reloading for non-shotgun weapons
+		_is_reloading = false
+		reload_finished.emit()
 
 func _on_animation_finished() -> void:
 	# Check if the finished animation was "reload"
@@ -329,7 +381,7 @@ func get_current_weapon_ammo() -> int:
 	if slots[current_weapon_slot] == null:
 		return 0
 	var weapon_type = _get_weapon_type_string(slots[current_weapon_slot].type)
-	return inventory[weapon_type + "_ammo"]
+	return inventory[weapon_type + "_ammo"] if inventory.has(weapon_type + "_ammo") else 0
 
 func set_current_weapon_ammo(amount: int) -> void:
 	if slots[current_weapon_slot] == null:
@@ -346,12 +398,14 @@ func _get_weapon_type_string(weapon_type: Weapon.WeaponType) -> String:
 		Weapon.WeaponType.SHOTGUN:
 			return "shotgun"
 		_:
-			return "" # fallback
+			return "knife" # fallback
 
 func equip_weapon(slot_index: int) -> void:
 	if slot_index < 0 or slot_index >= slots.size():
 		push_error("Invalid weapon slot index: %d" % slot_index)
 		return
+	if _is_reloading:
+		_interrupt_reload()
 
 	current_weapon_slot = slot_index
 
