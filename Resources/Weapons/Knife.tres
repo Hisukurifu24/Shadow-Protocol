@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="Weapon" load_steps=4 format=3 uid="uid://cpdq4ohhyjxgx"]
+
+[ext_resource type="Script" uid="uid://calnw065pbolm" path="res://Scripts/Resources/Weapon.gd" id="2_dsnck"]
+[ext_resource type="Texture2D" uid="uid://bq27ptbnwd4tx" path="res://Arts/Guns/knife.png" id="2_qg4wg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qg4wg"]
+atlas = ExtResource("2_qg4wg")
+region = Rect2(169, 384, 1045, 194)
+
+[resource]
+script = ExtResource("2_dsnck")
+name = "Knife"
+sprite = SubResource("AtlasTexture_qg4wg")
+type = 3
+damage = 10
+fire_rate = 10.0
+reload_time = 1.0
+magazine_size = 0
+bullet_speed = 800.0
+metadata/_custom_type_script = "uid://calnw065pbolm"

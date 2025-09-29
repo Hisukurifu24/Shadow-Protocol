@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="Weapon" load_steps=5 format=3 uid="uid://dhd0575b1r30c"]
+
+[ext_resource type="PackedScene" uid="uid://bkf862ekeybun" path="res://Scenes/pellet.tscn" id="1_njmna"]
+[ext_resource type="Script" uid="uid://calnw065pbolm" path="res://Scripts/Resources/Weapon.gd" id="2_cilw4"]
+[ext_resource type="Texture2D" uid="uid://0uer8hv68xhj" path="res://Arts/Guns/Spritesheet/spritesheet.png" id="3_dy46y"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xxoqn"]
+atlas = ExtResource("3_dy46y")
+region = Rect2(10, 489, 334, 122)
+
+[resource]
+script = ExtResource("2_cilw4")
+name = "Base Shotgun"
+sprite = SubResource("AtlasTexture_xxoqn")
+type = 2
+damage = 10
+fire_rate = 1.0
+reload_time = 1.0
+magazine_size = 8
+bullet_speed = 1200.0
+bullet_scene = ExtResource("1_njmna")
+metadata/_custom_type_script = "uid://calnw065pbolm"

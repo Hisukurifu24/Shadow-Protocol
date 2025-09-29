@@ -169,7 +169,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("35_xjh3m")
 }],
-"loop": true,
+"loop": false,
 "name": &"melee_attack",
 "speed": 20.0
 }, {
