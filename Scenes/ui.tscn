@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bxcdn2v1ffjm4"]
+[gd_scene load_steps=12 format=3 uid="uid://bxcdn2v1ffjm4"]
 
 [ext_resource type="Texture2D" uid="uid://blh68p6fsiaph" path="res://Arts/UI/Spritesheet/UI_TravelBook_SpritesheetInfo01a.png" id="1_jxero"]
 [ext_resource type="Script" uid="uid://dbe16agb5kjb0" path="res://Scripts/ui.gd" id="1_qdvrb"]
+[ext_resource type="Texture2D" uid="uid://bct5coqvxs7bs" path="res://Arts/UI/Pain Hud.png" id="3_nf4gj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qdvrb"]
 atlas = ExtResource("1_jxero")
@@ -18,6 +19,25 @@ region = Rect2(65, 289, 30, 30)
 [sub_resource type="AtlasTexture" id="AtlasTexture_2246s"]
 atlas = ExtResource("1_jxero")
 region = Rect2(65, 289, 30, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m78vo"]
+atlas = ExtResource("1_jxero")
+region = Rect2(64, 560, 64, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_smcll"]
+texture = SubResource("AtlasTexture_m78vo")
+texture_margin_left = 2.0
+texture_margin_top = 2.0
+texture_margin_right = 2.0
+texture_margin_bottom = 2.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ryf15"]
+atlas = ExtResource("1_jxero")
+region = Rect2(64, 576, 32, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mmixe"]
+texture = SubResource("AtlasTexture_ryf15")
+modulate_color = Color(0.767025, 2.52686e-06, 9.62615e-07, 1)
 
 [node name="UI" type="CanvasLayer"]
 script = ExtResource("1_qdvrb")
@@ -205,3 +225,34 @@ offset_right = 51.0
 offset_bottom = 2.0
 grow_vertical = 0
 text = "3"
+
+[node name="LifeBar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -33.0
+offset_top = -61.0
+offset_right = 33.0
+offset_bottom = -39.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxTexture_smcll")
+theme_override_styles/fill = SubResource("StyleBoxTexture_mmixe")
+value = 66.13
+show_percentage = false
+
+[node name="HealthOverlay" type="TextureRect" parent="."]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("3_nf4gj")
+expand_mode = 1
