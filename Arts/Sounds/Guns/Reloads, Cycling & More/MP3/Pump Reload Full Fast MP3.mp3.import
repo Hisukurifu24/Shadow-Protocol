@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bdey8p0bukakp"
+path="res://.godot/imported/Pump Reload Full Fast MP3.mp3-25faf2c8572bb267be4a84146d0675de.mp3str"
+
+[deps]
+
+source_file="res://Arts/Sounds/Guns/Reloads, Cycling & More/MP3/Pump Reload Full Fast MP3.mp3"
+dest_files=["res://.godot/imported/Pump Reload Full Fast MP3.mp3-25faf2c8572bb267be4a84146d0675de.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

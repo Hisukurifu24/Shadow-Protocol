@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://buhmb6pqf46nh"
+path="res://.godot/imported/44 Magnum Eject One Casing.mp3-2a90ae37df8b5d91a991c25f5d152a88.mp3str"
+
+[deps]
+
+source_file="res://Arts/Sounds/Guns/Revolver/44 Magnum/MP3/44 Magnum Eject One Casing.mp3"
+dest_files=["res://.godot/imported/44 Magnum Eject One Casing.mp3-2a90ae37df8b5d91a991c25f5d152a88.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

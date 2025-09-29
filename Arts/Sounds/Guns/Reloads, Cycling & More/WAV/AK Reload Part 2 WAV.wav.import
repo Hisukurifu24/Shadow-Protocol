@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dw1ynpjo50is5"
+path="res://.godot/imported/AK Reload Part 2 WAV.wav-6cd5dc7c9be620e7c9927fc31be62d65.sample"
+
+[deps]
+
+source_file="res://Arts/Sounds/Guns/Reloads, Cycling & More/WAV/AK Reload Part 2 WAV.wav"
+dest_files=["res://.godot/imported/AK Reload Part 2 WAV.wav-6cd5dc7c9be620e7c9927fc31be62d65.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

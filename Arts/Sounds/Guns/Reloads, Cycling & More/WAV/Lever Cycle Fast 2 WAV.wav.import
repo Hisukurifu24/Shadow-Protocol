@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://d30q5cq2eynh6"
+path="res://.godot/imported/Lever Cycle Fast 2 WAV.wav-4fea1bb36965bd268b77c5fd7390a2a8.sample"
+
+[deps]
+
+source_file="res://Arts/Sounds/Guns/Reloads, Cycling & More/WAV/Lever Cycle Fast 2 WAV.wav"
+dest_files=["res://.godot/imported/Lever Cycle Fast 2 WAV.wav-4fea1bb36965bd268b77c5fd7390a2a8.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

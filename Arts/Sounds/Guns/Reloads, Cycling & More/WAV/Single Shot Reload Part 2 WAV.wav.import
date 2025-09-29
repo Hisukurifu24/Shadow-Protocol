@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://1dj2cwqh46jw"
+path="res://.godot/imported/Single Shot Reload Part 2 WAV.wav-fa74629e2ee2cf7391d4fe5f6070dd45.sample"
+
+[deps]
+
+source_file="res://Arts/Sounds/Guns/Reloads, Cycling & More/WAV/Single Shot Reload Part 2 WAV.wav"
+dest_files=["res://.godot/imported/Single Shot Reload Part 2 WAV.wav-fa74629e2ee2cf7391d4fe5f6070dd45.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

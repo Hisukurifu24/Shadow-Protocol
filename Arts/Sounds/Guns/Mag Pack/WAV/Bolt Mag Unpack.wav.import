@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://byhxmjk7ccsd2"
+path="res://.godot/imported/Bolt Mag Unpack.wav-d99c4aa3a19edca1084539232a1ad99e.sample"
+
+[deps]
+
+source_file="res://Arts/Sounds/Guns/Mag Pack/WAV/Bolt Mag Unpack.wav"
+dest_files=["res://.godot/imported/Bolt Mag Unpack.wav-d99c4aa3a19edca1084539232a1ad99e.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://slqsmb3hkqb7"
+path="res://.godot/imported/9mm Pistol Chamber Check Full.mp3-af9ef179d73ab0eea3ca042d0f0c9119.mp3str"
+
+[deps]
+
+source_file="res://Arts/Sounds/Guns/Pistol/MP3/9mm Pistol Chamber Check Full.mp3"
+dest_files=["res://.godot/imported/9mm Pistol Chamber Check Full.mp3-af9ef179d73ab0eea3ca042d0f0c9119.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

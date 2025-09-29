@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cgdrnsdj0nkc"
+path="res://.godot/imported/AK Rack WAV.wav-5c106679f2d35e2c88b377f8c282dd2c.sample"
+
+[deps]
+
+source_file="res://Arts/Sounds/Guns/Reloads, Cycling & More/WAV/AK Rack WAV.wav"
+dest_files=["res://.godot/imported/AK Rack WAV.wav-5c106679f2d35e2c88b377f8c282dd2c.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

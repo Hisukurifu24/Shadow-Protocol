@@ -19,51 +19,76 @@ offset_right = 467.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Subtitle" type="Label" parent="VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Subtitle" type="Label" parent="VBoxContainer/VBoxContainer"]
 layout_mode = 2
 text = "ART"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Title" type="Label" parent="VBoxContainer/HBoxContainer"]
+[node name="Title" type="Label" parent="VBoxContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 text = "Character and zombies model"
 
-[node name="Credit" type="Label" parent="VBoxContainer/HBoxContainer"]
+[node name="Credit" type="Label" parent="VBoxContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 text = "Riley Gombart"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Title" type="Label" parent="VBoxContainer/HBoxContainer2"]
+[node name="Title" type="Label" parent="VBoxContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 text = "UI"
 
-[node name="Credit" type="Label" parent="VBoxContainer/HBoxContainer2"]
+[node name="Credit" type="Label" parent="VBoxContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 text = "crusenho"
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer"]
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Title" type="Label" parent="VBoxContainer/HBoxContainer3"]
+[node name="Title" type="Label" parent="VBoxContainer/VBoxContainer/HBoxContainer3"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 text = "Font"
 
-[node name="Credit" type="Label" parent="VBoxContainer/HBoxContainer3"]
+[node name="Credit" type="Label" parent="VBoxContainer/VBoxContainer/HBoxContainer3"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 text = "caffinate"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Subtitle" type="Label" parent="VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "SOUND"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="VBoxContainer/VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "Guns"
+
+[node name="Credit" type="Label" parent="VBoxContainer/VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "f8studios"

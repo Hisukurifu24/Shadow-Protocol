@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cgfc53whfuseq"
+path="res://.godot/imported/AR Charging Handle WAV.wav-5a744c2e60449276eebbbb228d41264b.sample"
+
+[deps]
+
+source_file="res://Arts/Sounds/Guns/Reloads, Cycling & More/WAV/AR Charging Handle WAV.wav"
+dest_files=["res://.godot/imported/AR Charging Handle WAV.wav-5a744c2e60449276eebbbb228d41264b.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

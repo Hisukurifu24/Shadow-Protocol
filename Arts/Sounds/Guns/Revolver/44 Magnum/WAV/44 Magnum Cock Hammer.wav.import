@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://y2gtm6uxtg8n"
+path="res://.godot/imported/44 Magnum Cock Hammer.wav-259d91852d2b928bad62ad72a7558249.sample"
+
+[deps]
+
+source_file="res://Arts/Sounds/Guns/Revolver/44 Magnum/WAV/44 Magnum Cock Hammer.wav"
+dest_files=["res://.godot/imported/44 Magnum Cock Hammer.wav-259d91852d2b928bad62ad72a7558249.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

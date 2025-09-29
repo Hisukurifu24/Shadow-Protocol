@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cepe36cymvgu2"
+path="res://.godot/imported/AK PolyMag Unpack.mp3-b7bd4e2472d9840122ade6b74387dac7.mp3str"
+
+[deps]
+
+source_file="res://Arts/Sounds/Guns/Mag Pack/MP3/AK PolyMag Unpack.mp3"
+dest_files=["res://.godot/imported/AK PolyMag Unpack.mp3-b7bd4e2472d9840122ade6b74387dac7.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

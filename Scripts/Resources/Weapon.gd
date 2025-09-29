@@ -20,6 +20,8 @@ var current_ammo: int
 @export var bullet_speed: float = 800.0
 ## Scene for the bullet
 @export var bullet_scene: PackedScene = preload("res://Scenes/Bullet.tscn")
+## Sound effect for firing this weapon
+@export var fire_sound: AudioStream
 
 func _init():
 	current_ammo = magazine_size

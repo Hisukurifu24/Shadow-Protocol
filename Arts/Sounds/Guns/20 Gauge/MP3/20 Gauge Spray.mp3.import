@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bgpw1tt8mlu5h"
+path="res://.godot/imported/20 Gauge Spray.mp3-1c99957ba8c9972824a98e98224bfa40.mp3str"
+
+[deps]
+
+source_file="res://Arts/Sounds/Guns/20 Gauge/MP3/20 Gauge Spray.mp3"
+dest_files=["res://.godot/imported/20 Gauge Spray.mp3-1c99957ba8c9972824a98e98224bfa40.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

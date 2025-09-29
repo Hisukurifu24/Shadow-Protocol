@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bkpp6ow8egiuw"
+path="res://.godot/imported/44 Magnum Close Cylinder.mp3-a7804e86922e8f7727b85c2c90b34d58.mp3str"
+
+[deps]
+
+source_file="res://Arts/Sounds/Guns/Revolver/44 Magnum/MP3/44 Magnum Close Cylinder.mp3"
+dest_files=["res://.godot/imported/44 Magnum Close Cylinder.mp3-a7804e86922e8f7727b85c2c90b34d58.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

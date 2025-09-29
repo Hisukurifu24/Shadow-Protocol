@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://nx605cjta2cq"
+path="res://.godot/imported/44 Magnum Eject Full.wav-8d1f7253d1e6e6535f58555df4356857.sample"
+
+[deps]
+
+source_file="res://Arts/Sounds/Guns/Revolver/44 Magnum/WAV/44 Magnum Eject Full.wav"
+dest_files=["res://.godot/imported/44 Magnum Eject Full.wav-8d1f7253d1e6e6535f58555df4356857.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

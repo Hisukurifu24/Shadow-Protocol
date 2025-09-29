@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://2b3y35rj5vjv"
+path="res://.godot/imported/556 Spray Slow WAV.wav-c01d8fc82bf5abd0cc75e3cfe169ab25.sample"
+
+[deps]
+
+source_file="res://Arts/Sounds/Guns/5.56/WAV/556 Spray Slow WAV.wav"
+dest_files=["res://.godot/imported/556 Spray Slow WAV.wav-c01d8fc82bf5abd0cc75e3cfe169ab25.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

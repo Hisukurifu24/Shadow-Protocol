@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dhnbkkmsn85tf"
+path="res://.godot/imported/22LR Magazine Pack.mp3-970f177e147cf01e0062d73e2669956e.mp3str"
+
+[deps]
+
+source_file="res://Arts/Sounds/Guns/Mag Pack/MP3/22LR Magazine Pack.mp3"
+dest_files=["res://.godot/imported/22LR Magazine Pack.mp3-970f177e147cf01e0062d73e2669956e.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

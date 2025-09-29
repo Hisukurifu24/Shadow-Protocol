@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cq6dvr25qvseb"
+path="res://.godot/imported/AK Reload Full MP3.mp3-9e0df9aac68052dc9e1822105ab742aa.mp3str"
+
+[deps]
+
+source_file="res://Arts/Sounds/Guns/Reloads, Cycling & More/MP3/AK Reload Full MP3.mp3"
+dest_files=["res://.godot/imported/AK Reload Full MP3.mp3-9e0df9aac68052dc9e1822105ab742aa.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

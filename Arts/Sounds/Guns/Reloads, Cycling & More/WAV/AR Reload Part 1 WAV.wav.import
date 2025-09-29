@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bo4grqk33061v"
+path="res://.godot/imported/AR Reload Part 1 WAV.wav-d58020b1c2027813675fbd1e5147e75b.sample"
+
+[deps]
+
+source_file="res://Arts/Sounds/Guns/Reloads, Cycling & More/WAV/AR Reload Part 1 WAV.wav"
+dest_files=["res://.godot/imported/AR Reload Part 1 WAV.wav-d58020b1c2027813675fbd1e5147e75b.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

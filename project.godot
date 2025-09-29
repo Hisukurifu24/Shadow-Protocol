@@ -28,6 +28,7 @@ enabled=PackedStringArray("res://addons/kanban_tasks/plugin.cfg")
 
 folder_colors={
 "res://Arts/": "pink",
+"res://Arts/Sounds/": "orange",
 "res://Scenes/": "blue",
 "res://Scripts/": "gray"
 }

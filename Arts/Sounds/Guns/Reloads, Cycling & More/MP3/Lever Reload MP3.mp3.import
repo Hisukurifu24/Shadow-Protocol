@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://byot0rf3c5ep7"
+path="res://.godot/imported/Lever Reload MP3.mp3-104b49c95cc1e0536237546fd1c9f665.mp3str"
+
+[deps]
+
+source_file="res://Arts/Sounds/Guns/Reloads, Cycling & More/MP3/Lever Reload MP3.mp3"
+dest_files=["res://.godot/imported/Lever Reload MP3.mp3-104b49c95cc1e0536237546fd1c9f665.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

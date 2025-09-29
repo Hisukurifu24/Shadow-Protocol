@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bcva5fuln0qr8"
+path="res://.godot/imported/AR Bolt Release WAV.wav-e6613d83605952d9d539901a81e76991.sample"
+
+[deps]
+
+source_file="res://Arts/Sounds/Guns/Reloads, Cycling & More/WAV/AR Bolt Release WAV.wav"
+dest_files=["res://.godot/imported/AR Bolt Release WAV.wav-e6613d83605952d9d539901a81e76991.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

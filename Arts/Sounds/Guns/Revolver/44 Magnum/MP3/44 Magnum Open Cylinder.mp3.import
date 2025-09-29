@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dgy5eu3jmg7qp"
+path="res://.godot/imported/44 Magnum Open Cylinder.mp3-c6ed00e7c8c2f1c0a7a68139345d2a40.mp3str"
+
+[deps]
+
+source_file="res://Arts/Sounds/Guns/Revolver/44 Magnum/MP3/44 Magnum Open Cylinder.mp3"
+dest_files=["res://.godot/imported/44 Magnum Open Cylinder.mp3-c6ed00e7c8c2f1c0a7a68139345d2a40.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

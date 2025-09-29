@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://yco3um73ka1l"
+path="res://.godot/imported/Pump Reload Part 1 WAV.wav-3d0f10b59459cb198e5cc02f3f863c30.sample"
+
+[deps]
+
+source_file="res://Arts/Sounds/Guns/Reloads, Cycling & More/WAV/Pump Reload Part 1 WAV.wav"
+dest_files=["res://.godot/imported/Pump Reload Part 1 WAV.wav-3d0f10b59459cb198e5cc02f3f863c30.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

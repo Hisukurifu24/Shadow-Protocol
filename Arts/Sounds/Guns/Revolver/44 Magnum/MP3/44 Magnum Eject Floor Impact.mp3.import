@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b1t5yl5gsmusd"
+path="res://.godot/imported/44 Magnum Eject Floor Impact.mp3-e43058546acda34a2c2640594e8f9875.mp3str"
+
+[deps]
+
+source_file="res://Arts/Sounds/Guns/Revolver/44 Magnum/MP3/44 Magnum Eject Floor Impact.mp3"
+dest_files=["res://.godot/imported/44 Magnum Eject Floor Impact.mp3-e43058546acda34a2c2640594e8f9875.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

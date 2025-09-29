@@ -26,10 +26,8 @@
 			"uuid": "5a4cf4cf-dab0-4bcf-a902-278f0fef495c",
 			"title": "Todo",
 			"tasks": [
-				"2b1a7b52-8274-4e28-8a39-a59ddf680403",
 				"483ce63c-545c-456d-a494-de310400256b",
 				"7bce1e9e-c0b3-4106-b604-4973c5d3456e",
-				"b7406614-44bf-41f2-9bd3-0abff8e46a64",
 				"940ab036-e3ec-46f5-bc47-f54036c0bae2",
 				"25bee614-7d31-4f68-bd9d-9ce565405678",
 				"d77e7976-3a3e-4c7b-80d8-3314c7f54726",
@@ -41,14 +39,16 @@
 			"uuid": "675b0020-0264-4ef2-9e0c-5a16b29d390b",
 			"title": "Doing",
 			"tasks": [
-				"38b3a401-08ec-443d-8ece-3226cde276ac"
+				"38b3a401-08ec-443d-8ece-3226cde276ac",
+				"b7406614-44bf-41f2-9bd3-0abff8e46a64"
 			]
 		},
 		{
 			"uuid": "5553020b-26d4-4d9f-83ec-0f77d1a1667d",
 			"title": "Done",
 			"tasks": [
-				"f76df0f9-cdb7-4588-9eb8-c5c1e7a62b76"
+				"f76df0f9-cdb7-4588-9eb8-c5c1e7a62b76",
+				"2b1a7b52-8274-4e28-8a39-a59ddf680403"
 			]
 		},
 		{
@@ -119,7 +119,7 @@
 			"steps": [
 				{
 					"details": "HUD con HP e ammo",
-					"done": false
+					"done": true
 				},
 				{
 					"details": "Schermata Game Over / Victory.",
