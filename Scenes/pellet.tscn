@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bkf862ekeybun"]
+
+[ext_resource type="Script" uid="uid://bwwche3h5u7wk" path="res://Scripts/pellet.gd" id="1_3383t"]
+[ext_resource type="Texture2D" uid="uid://460n40dschwg" path="res://Arts/Guns/pellet.png" id="2_3383t"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xjght"]
+size = Vector2(29, 12)
+
+[node name="Bullet" type="Area2D"]
+scale = Vector2(0.005, 0.005)
+script = ExtResource("1_3383t")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_3383t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_xjght")
