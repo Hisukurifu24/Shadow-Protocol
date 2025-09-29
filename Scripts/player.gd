@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends Entity
 class_name Player
 
 # Animation state enums
@@ -29,10 +29,24 @@ signal aim_state_changed(is_lerping: bool)
 @export var speed: float = 300.0
 @export var sprint_multiplier: float = 1.5
 
+# Health regeneration variables
+@export var health_regen_delay: float = 5.0 # Time in seconds to wait before regenerating
+@export var health_regen_rate: float = 2.0 # Health points per second to regenerate
+var _time_since_last_hit: float = 0.0
+var _is_regenerating: bool = false
+
 @onready var muzzle: Node2D = $Muzzle
 @onready var feet_sprite: AnimatedSprite2D = $FeetSprite
 @onready var body_sprite: AnimatedSprite2D = $BodySprite
 @onready var melee_area: Area2D = %MeleeRange
+
+@onready var gun_sfx: AudioStreamPlayer2D = %GunSFX
+@onready var player_sfx: AudioStreamPlayer2D = %PlayerSFX
+var footsteps
+
+# Footstep variables
+var footstep_timer: float = 0.0
+var footstep_interval: float = 0.4 # Time between footsteps in seconds
 
 ## rotation speed multiplier
 @export var rotation_speed: float = 10.0
@@ -74,6 +88,9 @@ var previous_player_state: PlayerState = PlayerState.IDLE
 var previous_body_state: BodyState = BodyState.IDLE
 
 func _ready() -> void:
+	# Call parent _ready to initialize health
+	super._ready()
+	
 	# DEBUG
 	# Give player some starting ammo and a rifle
 	pick_up_weapon(load("res://Resources/Weapons/BaseRifle.tres"))
@@ -83,12 +100,19 @@ func _ready() -> void:
 	inventory["rifle_ammo"] = 90
 	inventory["pistol_ammo"] = 60
 	inventory["shotgun_ammo"] = 32
+
+	# Load a few footstep sounds
+	footsteps = [
+		load("res://Arts/Sounds/FreeSteps/Tiles/Steps_tiles-001.ogg"),
+		load("res://Arts/Sounds/FreeSteps/Tiles/Steps_tiles-005.ogg"),
+		load("res://Arts/Sounds/FreeSteps/Tiles/Steps_tiles-010.ogg"),
+		load("res://Arts/Sounds/FreeSteps/Tiles/Steps_tiles-015.ogg")
+	]
+
 	
 	# Connect animation finished signal
 	body_sprite.animation_finished.connect(_on_animation_finished)
-	melee_area.body_entered.connect(_on_melee_body_entered)
-
-## Get analog stick input, cached per frame to avoid duplicate reads
+	body_sprite.frame_changed.connect(_on_body_frame_changed) ## Get analog stick input, cached per frame to avoid duplicate reads
 func _get_rotation_input() -> Vector2:
 	var current_frame = Engine.get_process_frames()
 	if _rotation_input_frame != current_frame:
@@ -98,11 +122,17 @@ func _get_rotation_input() -> Vector2:
 	return _cached_rotation_input
 
 func _physics_process(delta: float) -> void:
+	# Handle health regeneration
+	_handle_health_regeneration(delta)
+	
 	# Handle shoot animation timer
 	if _is_shooting:
 		_shoot_timer -= delta
 		if _shoot_timer <= 0.0:
 			_is_shooting = false
+
+	# Handle footstep timer
+	footstep_timer -= delta
 
 	# Get input direction
 	var input_direction = Vector2()
@@ -126,6 +156,11 @@ func _physics_process(delta: float) -> void:
 		input_direction = input_direction.normalized()
 		velocity = input_direction * speed
 		velocity *= sprint_multiplier if _is_sprinting else 1.0
+		
+		# Play footsteps while moving
+		if footstep_timer <= 0.0:
+			play_random_footstep()
+			footstep_timer = footstep_interval
 	else:
 		velocity = Vector2.ZERO
 	
@@ -188,7 +223,7 @@ func _physics_process(delta: float) -> void:
 		if not _is_reloading:
 			# Check if we are using a melee weapon
 			if slots[current_weapon_slot] and slots[current_weapon_slot].type == Weapon.WeaponType.MELEE:
-				_is_melee_attacking = true
+				_perform_melee_attack()
 			# Check if we have a weapon equipped and ammo in the magazine
 			elif slots[current_weapon_slot] and slots[current_weapon_slot].current_ammo > 0:
 				_is_shooting = true
@@ -215,11 +250,15 @@ func _physics_process(delta: float) -> void:
 		# Cancel reload if currently reloading
 		if _is_reloading:
 			_interrupt_reload()
-		_is_melee_attacking = true
+		_perform_melee_attack()
 
 func _interrupt_reload() -> void:
 	_is_reloading = false
 	reload_finished.emit()
+
+func _perform_melee_attack() -> void:
+	_is_melee_attacking = true
+	# Damage will be dealt in _on_body_frame_changed when animation reaches the right frame
 
 ## Shoot 1 bullet
 func shoot() -> void:
@@ -255,6 +294,7 @@ func shoot() -> void:
 			p.global_position = muzzle.global_position
 			p.direction = bullet_direction
 			p.rotation = bullet_direction.angle()
+			p.damage = slots[current_weapon_slot].damage
 			get_tree().current_scene.add_child(p)
 	else:
 		var b := slots[current_weapon_slot].bullet_scene.instantiate()
@@ -262,7 +302,13 @@ func shoot() -> void:
 		b.global_position = muzzle.global_position
 		b.direction = bullet_direction
 		b.rotation = bullet_direction.angle()
+		b.damage = slots[current_weapon_slot].damage
 		get_tree().current_scene.add_child(b)
+	
+	# Play weapon-specific gun sound effect
+	if slots[current_weapon_slot].fire_sound != null:
+		gun_sfx.stream = slots[current_weapon_slot].fire_sound
+		gun_sfx.play()
 
 func _start_reload() -> void:
 	if _is_reloading:
@@ -313,6 +359,23 @@ func _on_animation_finished() -> void:
 		_finish_reload()
 	if body_sprite.animation == "melee_attack" and _is_melee_attacking:
 		_is_melee_attacking = false
+
+func _on_body_frame_changed() -> void:
+	# Apply melee damage at a specific frame of the melee attack animation
+	if body_sprite.animation == "melee_attack" and body_sprite.frame == 10 and _is_melee_attacking:
+		# Get damage value
+		var damage = 0
+		if slots[current_weapon_slot] != null and slots[current_weapon_slot].type == Weapon.WeaponType.MELEE:
+			damage = slots[current_weapon_slot].damage
+		else:
+			# Default punch/unarmed damage if no melee weapon equipped
+			damage = 50
+		
+		# Check for all bodies currently in the melee area and damage them
+		var overlapping_bodies = melee_area.get_overlapping_bodies()
+		for body in overlapping_bodies:
+			if body is Zombie:
+				(body as Zombie).take_damage(damage)
 
 func _update_player_states() -> void:
 	# Determine body state (higher priority)
@@ -432,6 +495,34 @@ func pick_up_weapon(new_weapon: Weapon) -> bool:
 	equip_weapon(current_weapon_slot)
 	return true
 
-func _on_melee_body_entered(_body: Node) -> void:
-	if _is_melee_attacking:
-		pass # Handle melee hit logic here (e.g., apply damage to enemy)
+# Override take_damage to reset regeneration timer
+func take_damage(amount: int) -> void:
+	super.take_damage(amount) # Call parent implementation
+	_time_since_last_hit = 0.0 # Reset the timer
+	_is_regenerating = false # Stop any current regeneration
+
+# Handle health regeneration logic
+func _handle_health_regeneration(delta: float) -> void:
+	# Always increment time since last hit
+	_time_since_last_hit += delta
+	
+	# Check if enough time has passed since last hit and we're not at full health
+	if health < max_health and _time_since_last_hit >= health_regen_delay:
+		if not _is_regenerating:
+			_is_regenerating = true
+			# You could add a visual indicator here that regeneration started
+		
+		# Regenerate health
+		var health_to_add = health_regen_rate * delta
+		health = min(health + health_to_add, max_health)
+		
+		# Stop regenerating when at full health
+		if health >= max_health:
+			_is_regenerating = false
+
+# Play a random footstep sound
+func play_random_footstep() -> void:
+	if footsteps.size() > 0:
+		var random_index = randi() % footsteps.size()
+		player_sfx.stream = footsteps[random_index]
+		player_sfx.play()
