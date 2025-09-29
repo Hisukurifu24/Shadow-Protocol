@@ -1,0 +1,116 @@
+[gd_scene load_steps=11 format=3 uid="uid://c3tebx3llr718"]
+
+[ext_resource type="Script" uid="uid://dkkqs02tuw7iy" path="res://Scripts/main_menu.gd" id="1_1ehe0"]
+[ext_resource type="Texture2D" uid="uid://wrx0ak8uuo0a" path="res://Arts/main_menu_bg.png" id="1_28flt"]
+[ext_resource type="FontFile" uid="uid://dojf4xr5s3tqx" path="res://Arts/Font/28 Days Later.ttf" id="2_48xlc"]
+[ext_resource type="Texture2D" uid="uid://bftlih8yxb6c2" path="res://Arts/UI/FreeHorrorUi.png" id="4_ce3w2"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_1ehe0"]
+font = ExtResource("2_48xlc")
+font_size = 100
+outline_size = 5
+outline_color = Color(1.15032e-05, 0.55423, 0.0289104, 0.352941)
+shadow_size = 20
+shadow_color = Color(0, 0, 0, 0.286275)
+shadow_offset = Vector2(9.82, 2.27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cp0ys"]
+atlas = ExtResource("4_ce3w2")
+region = Rect2(6, 234, 52, 15)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ce3w2"]
+texture = SubResource("AtlasTexture_cp0ys")
+modulate_color = Color(0.674815, 0.674815, 0.674815, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n45e2"]
+atlas = ExtResource("4_ce3w2")
+region = Rect2(70, 234, 52, 15)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_opfnp"]
+texture = SubResource("AtlasTexture_n45e2")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yhxw7"]
+texture = SubResource("AtlasTexture_cp0ys")
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1ehe0")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_28flt")
+expand_mode = 1
+
+[node name="Title" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -360.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "SHADOW
+PROTOCOL"
+label_settings = SubResource("LabelSettings_1ehe0")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -132.0
+offset_top = -47.0
+offset_right = 132.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 65)
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_fonts/font = ExtResource("2_48xlc")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/hover = SubResource("StyleBoxTexture_ce3w2")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_opfnp")
+theme_override_styles/normal = SubResource("StyleBoxTexture_yhxw7")
+text = "PLAY"
+
+[node name="Button2" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 65)
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_fonts/font = ExtResource("2_48xlc")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/hover = SubResource("StyleBoxTexture_ce3w2")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_opfnp")
+theme_override_styles/normal = SubResource("StyleBoxTexture_yhxw7")
+text = "Settings"
+
+[node name="Button3" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 65)
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_fonts/font = ExtResource("2_48xlc")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/hover = SubResource("StyleBoxTexture_ce3w2")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_opfnp")
+theme_override_styles/normal = SubResource("StyleBoxTexture_yhxw7")
+text = "Exit
+"

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://1uxrvt4jv2c3"
-path="res://.godot/imported/player2.png-e97812932a53f049d44d25f2ed586544.ctex"
+uid="uid://bftlih8yxb6c2"
+path="res://.godot/imported/FreeHorrorUi.png-59fc79e4dbd106784835fba58d1f86ca.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Arts/player2.png"
-dest_files=["res://.godot/imported/player2.png-e97812932a53f049d44d25f2ed586544.ctex"]
+source_file="res://Arts/UI/FreeHorrorUi.png"
+dest_files=["res://.godot/imported/FreeHorrorUi.png-59fc79e4dbd106784835fba58d1f86ca.ctex"]
 
 [params]
 
