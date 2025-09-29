@@ -13,7 +13,11 @@ config_version=5
 config/name="ShadowProtocol"
 run/main_scene="uid://cgv81570vdjoh"
 config/features=PackedStringArray("4.4", "Mobile")
-config/icon="res://Arts/icon.svg"
+config/icon="uid://dhuvg8cbea6af"
+
+[autoload]
+
+GameManagerNode="*res://Scripts/GameManager.gd"
 
 [display]
 

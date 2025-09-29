@@ -62,3 +62,8 @@ func _attack() -> void:
 	# Attack logic with cooldown handled in _physics_process
 	sprite.play("attack")
 	_is_attacking = true
+
+func die() -> void:
+	GameManagerNode.score += 10
+	GameManagerNode.zombies_killed += 1
+	super.die()
