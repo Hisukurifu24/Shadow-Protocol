@@ -9,7 +9,7 @@
 font = ExtResource("2_48xlc")
 font_size = 100
 outline_size = 5
-outline_color = Color(1.15032e-05, 0.55423, 0.0289104, 0.352941)
+outline_color = Color(0.537255, 0, 0.027451, 0.352941)
 shadow_size = 20
 shadow_color = Color(0, 0, 0, 0.286275)
 shadow_offset = Vector2(9.82, 2.27)
@@ -54,12 +54,11 @@ expand_mode = 1
 [node name="Title" type="Label" parent="."]
 unique_name_in_owner = true
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = 10
 anchor_right = 1.0
-anchor_bottom = 1.0
-offset_bottom = -360.0
+offset_top = 15.0
+offset_bottom = 206.0
 grow_horizontal = 2
-grow_vertical = 2
 text = "SHADOW
 PROTOCOL"
 label_settings = SubResource("LabelSettings_1ehe0")
@@ -69,22 +68,24 @@ vertical_alignment = 1
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 texture_filter = 1
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 13
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -132.0
-offset_top = -47.0
-offset_right = 132.0
-offset_bottom = 250.0
+anchor_bottom = 1.0
+offset_left = -228.0
+offset_top = 221.0
+offset_right = 229.0
+offset_bottom = -33.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 10
+alignment = 1
 
-[node name="Button" type="Button" parent="VBoxContainer"]
+[node name="PlayButton" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 65)
 layout_mode = 2
-size_flags_vertical = 6
+size_flags_vertical = 4
 theme_override_fonts/font = ExtResource("2_48xlc")
 theme_override_font_sizes/font_size = 40
 theme_override_styles/hover = SubResource("StyleBoxTexture_ce3w2")
@@ -92,10 +93,11 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_opfnp")
 theme_override_styles/normal = SubResource("StyleBoxTexture_yhxw7")
 text = "PLAY"
 
-[node name="Button2" type="Button" parent="VBoxContainer"]
+[node name="SettingsButton" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 65)
 layout_mode = 2
-size_flags_vertical = 6
+size_flags_vertical = 4
 theme_override_fonts/font = ExtResource("2_48xlc")
 theme_override_font_sizes/font_size = 40
 theme_override_styles/hover = SubResource("StyleBoxTexture_ce3w2")
@@ -103,10 +105,35 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_opfnp")
 theme_override_styles/normal = SubResource("StyleBoxTexture_yhxw7")
 text = "Settings"
 
-[node name="Button3" type="Button" parent="VBoxContainer"]
+[node name="HighscoresButton" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 65)
 layout_mode = 2
-size_flags_vertical = 6
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("2_48xlc")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/hover = SubResource("StyleBoxTexture_ce3w2")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_opfnp")
+theme_override_styles/normal = SubResource("StyleBoxTexture_yhxw7")
+text = "HIGHSCORES"
+
+[node name="CreditsButton" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 65)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("2_48xlc")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/hover = SubResource("StyleBoxTexture_ce3w2")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_opfnp")
+theme_override_styles/normal = SubResource("StyleBoxTexture_yhxw7")
+text = "CREDITS"
+
+[node name="ExitButton" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 65)
+layout_mode = 2
+size_flags_vertical = 4
 theme_override_fonts/font = ExtResource("2_48xlc")
 theme_override_font_sizes/font_size = 40
 theme_override_styles/hover = SubResource("StyleBoxTexture_ce3w2")
