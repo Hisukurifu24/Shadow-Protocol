@@ -1,0 +1,374 @@
+[gd_scene load_steps=13 format=3 uid="uid://d10bjcywd3gh6"]
+
+[ext_resource type="Script" uid="uid://b4xit50lgyvih" path="res://Scripts/settings.gd" id="1_1fwha"]
+[ext_resource type="Texture2D" uid="uid://wrx0ak8uuo0a" path="res://Arts/main_menu_bg.png" id="2_mxnw7"]
+[ext_resource type="FontFile" uid="uid://dojf4xr5s3tqx" path="res://Arts/Font/28 Days Later.ttf" id="3_8xlkc"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_main_title"]
+font = ExtResource("3_8xlkc")
+font_size = 60
+outline_size = 3
+outline_color = Color(0.537255, 0, 0.027451, 0.7)
+shadow_size = 10
+shadow_color = Color(0, 0, 0, 0.5)
+shadow_offset = Vector2(5, 5)
+
+[sub_resource type="LabelSettings" id="LabelSettings_section"]
+font = ExtResource("3_8xlkc")
+font_size = 24
+outline_size = 2
+outline_color = Color(0.4, 0, 0.02, 0.6)
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 0.4)
+shadow_offset = Vector2(3, 3)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_slider_bg"]
+bg_color = Color(0.2, 0.05, 0.05, 0.8)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.5, 0.1, 0.1, 0.9)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_slider_fill"]
+bg_color = Color(0.7, 0.15, 0.15, 0.7)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.6, 0.1, 0.1, 0.8)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dropdown_focus"]
+bg_color = Color(0.25, 0.06, 0.06, 0.95)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.9, 0.2, 0.2, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+shadow_color = Color(0.6, 0, 0, 0.8)
+shadow_size = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dropdown_disabled"]
+bg_color = Color(0.15, 0.03, 0.03, 0.6)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.4, 0.08, 0.08, 0.7)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dropdown_hover"]
+bg_color = Color(0.3, 0.08, 0.08, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.7, 0.15, 0.15, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+shadow_color = Color(0.4, 0, 0, 0.6)
+shadow_size = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dropdown_pressed"]
+bg_color = Color(0.4, 0.1, 0.1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.8, 0.2, 0.2, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+shadow_color = Color(0.5, 0, 0, 0.7)
+shadow_size = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dropdown_normal"]
+bg_color = Color(0.2, 0.05, 0.05, 0.9)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.6, 0.1, 0.1, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+shadow_color = Color(0.3, 0, 0, 0.5)
+shadow_size = 2
+
+[node name="Settings" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1fwha")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_mxnw7")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 50.0
+offset_top = 50.0
+offset_right = -50.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TitleLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "SETTINGS"
+label_settings = SubResource("LabelSettings_main_title")
+horizontal_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MainContainer" type="VBoxContainer" parent="VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="AudioSection" type="VBoxContainer" parent="VBoxContainer/ScrollContainer/MainContainer"]
+layout_mode = 2
+
+[node name="AudioTitle" type="Label" parent="VBoxContainer/ScrollContainer/MainContainer/AudioSection"]
+layout_mode = 2
+text = "AUDIO"
+label_settings = SubResource("LabelSettings_section")
+
+[node name="AudioContainer" type="VBoxContainer" parent="VBoxContainer/ScrollContainer/MainContainer/AudioSection"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MasterVolumeContainer" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/MainContainer/AudioSection/AudioContainer"]
+layout_mode = 2
+
+[node name="MasterVolumeLabel" type="Label" parent="VBoxContainer/ScrollContainer/MainContainer/AudioSection/AudioContainer/MasterVolumeContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_fonts/font = ExtResource("3_8xlkc")
+theme_override_font_sizes/font_size = 18
+text = "Master: 100%"
+vertical_alignment = 1
+
+[node name="MasterVolumeSlider" type="HSlider" parent="VBoxContainer/ScrollContainer/MainContainer/AudioSection/AudioContainer/MasterVolumeContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/slider = SubResource("StyleBoxFlat_slider_bg")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_slider_fill")
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="SFXVolumeContainer" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/MainContainer/AudioSection/AudioContainer"]
+layout_mode = 2
+
+[node name="SFXVolumeLabel" type="Label" parent="VBoxContainer/ScrollContainer/MainContainer/AudioSection/AudioContainer/SFXVolumeContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_fonts/font = ExtResource("3_8xlkc")
+theme_override_font_sizes/font_size = 18
+text = "SFX: 100%"
+vertical_alignment = 1
+
+[node name="SFXVolumeSlider" type="HSlider" parent="VBoxContainer/ScrollContainer/MainContainer/AudioSection/AudioContainer/SFXVolumeContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/slider = SubResource("StyleBoxFlat_slider_bg")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_slider_fill")
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="MusicVolumeContainer" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/MainContainer/AudioSection/AudioContainer"]
+layout_mode = 2
+
+[node name="MusicVolumeLabel" type="Label" parent="VBoxContainer/ScrollContainer/MainContainer/AudioSection/AudioContainer/MusicVolumeContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_fonts/font = ExtResource("3_8xlkc")
+theme_override_font_sizes/font_size = 18
+text = "Music: 100%"
+vertical_alignment = 1
+
+[node name="MusicVolumeSlider" type="HSlider" parent="VBoxContainer/ScrollContainer/MainContainer/AudioSection/AudioContainer/MusicVolumeContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/slider = SubResource("StyleBoxFlat_slider_bg")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_slider_fill")
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="AudioSpacer" type="Control" parent="VBoxContainer/ScrollContainer/MainContainer/AudioSection"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="DisplaySection" type="VBoxContainer" parent="VBoxContainer/ScrollContainer/MainContainer"]
+layout_mode = 2
+
+[node name="DisplayTitle" type="Label" parent="VBoxContainer/ScrollContainer/MainContainer/DisplaySection"]
+layout_mode = 2
+text = "DISPLAY"
+label_settings = SubResource("LabelSettings_section")
+
+[node name="DisplayContainer" type="VBoxContainer" parent="VBoxContainer/ScrollContainer/MainContainer/DisplaySection"]
+layout_mode = 2
+
+[node name="ResolutionContainer" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/MainContainer/DisplaySection/DisplayContainer"]
+layout_mode = 2
+
+[node name="ResolutionLabel" type="Label" parent="VBoxContainer/ScrollContainer/MainContainer/DisplaySection/DisplayContainer/ResolutionContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_fonts/font = ExtResource("3_8xlkc")
+theme_override_font_sizes/font_size = 18
+text = "Resolution:"
+vertical_alignment = 1
+
+[node name="ResolutionOption" type="OptionButton" parent="VBoxContainer/ScrollContainer/MainContainer/DisplaySection/DisplayContainer/ResolutionContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_fonts/font = ExtResource("3_8xlkc")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/focus = SubResource("StyleBoxFlat_dropdown_focus")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_dropdown_disabled")
+theme_override_styles/hover = SubResource("StyleBoxFlat_dropdown_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_dropdown_pressed")
+theme_override_styles/normal = SubResource("StyleBoxFlat_dropdown_normal")
+
+[node name="QualityContainer" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/MainContainer/DisplaySection/DisplayContainer"]
+layout_mode = 2
+
+[node name="QualityLabel" type="Label" parent="VBoxContainer/ScrollContainer/MainContainer/DisplaySection/DisplayContainer/QualityContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_fonts/font = ExtResource("3_8xlkc")
+theme_override_font_sizes/font_size = 18
+text = "Quality:"
+vertical_alignment = 1
+
+[node name="QualityOption" type="OptionButton" parent="VBoxContainer/ScrollContainer/MainContainer/DisplaySection/DisplayContainer/QualityContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_fonts/font = ExtResource("3_8xlkc")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/focus = SubResource("StyleBoxFlat_dropdown_focus")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_dropdown_disabled")
+theme_override_styles/hover = SubResource("StyleBoxFlat_dropdown_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_dropdown_pressed")
+theme_override_styles/normal = SubResource("StyleBoxFlat_dropdown_normal")
+
+[node name="FullscreenContainer" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/MainContainer/DisplaySection/DisplayContainer"]
+layout_mode = 2
+
+[node name="FullscreenLabel" type="Label" parent="VBoxContainer/ScrollContainer/MainContainer/DisplaySection/DisplayContainer/FullscreenContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_fonts/font = ExtResource("3_8xlkc")
+theme_override_font_sizes/font_size = 18
+text = "Fullscreen:"
+vertical_alignment = 1
+
+[node name="FullscreenButton" type="CheckBox" parent="VBoxContainer/ScrollContainer/MainContainer/DisplaySection/DisplayContainer/FullscreenContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_8xlkc")
+theme_override_font_sizes/font_size = 16
+
+[node name="VsyncContainer" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/MainContainer/DisplaySection/DisplayContainer"]
+layout_mode = 2
+
+[node name="VsyncLabel" type="Label" parent="VBoxContainer/ScrollContainer/MainContainer/DisplaySection/DisplayContainer/VsyncContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_fonts/font = ExtResource("3_8xlkc")
+theme_override_font_sizes/font_size = 18
+text = "V-Sync:"
+vertical_alignment = 1
+
+[node name="VsyncButton" type="CheckBox" parent="VBoxContainer/ScrollContainer/MainContainer/DisplaySection/DisplayContainer/VsyncContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_8xlkc")
+theme_override_font_sizes/font_size = 16
+button_pressed = true
+
+[node name="DisplaySpacer" type="Control" parent="VBoxContainer/ScrollContainer/MainContainer/DisplaySection"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="ButtonContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="ResetButton" type="Button" parent="VBoxContainer/ButtonContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.3, 0.3, 1)
+theme_override_fonts/font = ExtResource("3_8xlkc")
+theme_override_font_sizes/font_size = 20
+text = "RESET"
+
+[node name="ButtonSpacer" type="Control" parent="VBoxContainer/ButtonContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+
+[node name="BackButton" type="Button" parent="VBoxContainer/ButtonContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_fonts/font = ExtResource("3_8xlkc")
+theme_override_font_sizes/font_size = 20
+text = "BACK"
