@@ -31,16 +31,14 @@
 				"940ab036-e3ec-46f5-bc47-f54036c0bae2",
 				"25bee614-7d31-4f68-bd9d-9ce565405678",
 				"d77e7976-3a3e-4c7b-80d8-3314c7f54726",
-				"9cebe1ad-963c-41fc-bd8d-f0ae39f565f2",
-				"c466ac2e-e66c-403d-830f-80b1ec5ccd44"
+				"9cebe1ad-963c-41fc-bd8d-f0ae39f565f2"
 			]
 		},
 		{
 			"uuid": "675b0020-0264-4ef2-9e0c-5a16b29d390b",
 			"title": "Doing",
 			"tasks": [
-				"38b3a401-08ec-443d-8ece-3226cde276ac",
-				"b7406614-44bf-41f2-9bd3-0abff8e46a64"
+				"c466ac2e-e66c-403d-830f-80b1ec5ccd44"
 			]
 		},
 		{
@@ -48,7 +46,9 @@
 			"title": "Done",
 			"tasks": [
 				"f76df0f9-cdb7-4588-9eb8-c5c1e7a62b76",
-				"2b1a7b52-8274-4e28-8a39-a59ddf680403"
+				"2b1a7b52-8274-4e28-8a39-a59ddf680403",
+				"38b3a401-08ec-443d-8ece-3226cde276ac",
+				"b7406614-44bf-41f2-9bd3-0abff8e46a64"
 			]
 		},
 		{
@@ -86,7 +86,7 @@
 			"steps": [
 				{
 					"details": "AI",
-					"done": false
+					"done": true
 				}
 			]
 		},
@@ -123,7 +123,7 @@
 				},
 				{
 					"details": "Schermata Game Over / Victory.",
-					"done": false
+					"done": true
 				}
 			]
 		},
@@ -160,7 +160,16 @@
 			"title": "Leaderboard locale/online",
 			"description": "anche JSON su file per semplicità",
 			"category": "e316f62c-4d0b-4232-b51c-c39910d21512",
-			"steps": []
+			"steps": [
+				{
+					"details": "In locale",
+					"done": true
+				},
+				{
+					"details": "Online",
+					"done": false
+				}
+			]
 		}
 	],
 	"layout": {

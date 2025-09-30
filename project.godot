@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="ShadowProtocol"
-run/main_scene="uid://cgv81570vdjoh"
+run/main_scene="uid://c3tebx3llr718"
 config/features=PackedStringArray("4.4", "Mobile")
 config/icon="uid://dhuvg8cbea6af"
 
@@ -39,6 +39,7 @@ folder_colors={
 
 [gui]
 
+theme/custom="uid://xqgdaytqcmxa"
 theme/custom_font="uid://duxiwtiuo8t4p"
 
 [input]

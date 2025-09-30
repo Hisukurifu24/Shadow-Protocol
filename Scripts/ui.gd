@@ -3,6 +3,8 @@ extends CanvasLayer
 @onready var ammo_label: Label = %Ammo
 @onready var lifebar: ProgressBar = %LifeBar
 @onready var health_overlay: TextureRect = %HealthOverlay
+@onready var round_label: Label = %RoundLabel
+@onready var zombies_label: Label = %ZombiesLabel
 
 # Cursor settings
 @export var aiming_cursor: Texture2D = preload("res://Arts/Crosshairs 64/image0029.png")
@@ -18,6 +20,9 @@ func _ready():
 	player.weapon_changed.connect(_on_player_weapon_changed)
 	player.aim_state_changed.connect(_on_player_aim_state_changed)
 	player.health_changed.connect(_on_player_health_changed)
+	GameManagerNode.round_started.connect(_on_round_started)
+	GameManagerNode.round_ended.connect(_on_round_ended)
+	GameManagerNode.zombie_died.connect(_on_zombie_died)
 	
 	# Set initial cursor
 	Input.set_custom_mouse_cursor(aiming_cursor, Input.CURSOR_ARROW, Vector2(32, 32))
@@ -83,11 +88,11 @@ func _on_player_aim_state_changed(is_lerping: bool) -> void:
 		Input.set_custom_mouse_cursor(aiming_cursor, Input.CURSOR_ARROW, Vector2(32, 32))
 
 
-func _on_player_health_changed(new_health: int) -> void:
+func _on_player_health_changed(new_health: float) -> void:
 	_update_lifebar(new_health)
 	_update_health_overlay(new_health)
 
-func _update_lifebar(new_health: int) -> void:
+func _update_lifebar(new_health: float) -> void:
 	lifebar.value = new_health
 	# Update lifebar when the player's health changes
 	lifebar.value = new_health
@@ -102,7 +107,7 @@ func _update_lifebar(new_health: int) -> void:
 	else:
 		lifebar.visible = true
 
-func _update_health_overlay(new_health: int) -> void:
+func _update_health_overlay(new_health: float) -> void:
 	# Calculate health percentage (0.0 to 1.0)
 	var health_percentage = float(new_health) / float(player.max_health)
 	
@@ -119,3 +124,14 @@ func _update_health_overlay(new_health: int) -> void:
 	
 	# Apply the red overlay with calculated alpha using modulate for TextureRect
 	health_overlay.modulate = Color(1, 0, 0, red_alpha)
+
+func _on_round_started(new_round: int, zombies_alive: int) -> void:
+	round_label.text = "Current round: %d" % new_round
+	zombies_label.text = "Zombies alive: %d" % zombies_alive
+
+func _on_round_ended() -> void:
+	round_label.text = "Round Over! Prepare for the next round."
+	zombies_label.text = "Zombies alive: 0"
+
+func _on_zombie_died() -> void:
+	zombies_label.text = "Zombies alive: %d" % GameManagerNode.zombies_alive

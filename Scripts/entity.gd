@@ -13,6 +13,7 @@ var health: float:
 		if _health != new_health:
 			_health = new_health
 			health_changed.emit(int(_health))
+var _is_dead: bool = false
 
 func _ready() -> void:
 	health = max_health
@@ -21,8 +22,10 @@ func take_damage(amount: int) -> void:
 	health -= amount
 	modulate = Color(1, 0, 0) # Flash red on hit
 	
-	if health <= 0:
+	if health <= 0 and not _is_dead:
+		_is_dead = true
 		die()
+		return
 	
 	await get_tree().create_timer(0.1).timeout
 	modulate = Color(1, 1, 1) # Reset color

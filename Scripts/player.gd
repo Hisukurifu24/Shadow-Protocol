@@ -526,3 +526,7 @@ func play_random_footstep() -> void:
 		var random_index = randi() % footsteps.size()
 		player_sfx.stream = footsteps[random_index]
 		player_sfx.play()
+
+func die() -> void:
+	get_tree().change_scene_to_file("res://Scenes/game_over.tscn")
+	super.die()

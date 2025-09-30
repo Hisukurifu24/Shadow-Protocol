@@ -64,6 +64,5 @@ func _attack() -> void:
 	_is_attacking = true
 
 func die() -> void:
-	GameManagerNode.score += 10
-	GameManagerNode.zombies_killed += 1
+	GameManagerNode.zombie_died.emit()
 	super.die()

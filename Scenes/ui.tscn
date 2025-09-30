@@ -256,3 +256,21 @@ grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("3_nf4gj")
 expand_mode = 1
+
+[node name="RoundLabel" type="Label" parent="."]
+unique_name_in_owner = true
+texture_filter = 1
+offset_left = 13.0
+offset_top = 18.0
+offset_right = 118.0
+offset_bottom = 36.0
+text = "Prepare for next round!"
+
+[node name="ZombiesLabel" type="Label" parent="."]
+unique_name_in_owner = true
+texture_filter = 1
+offset_left = 13.0
+offset_top = 45.0
+offset_right = 176.0
+offset_bottom = 63.0
+text = "Zombies alive: 0"
