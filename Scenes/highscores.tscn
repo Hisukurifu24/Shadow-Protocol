@@ -1,0 +1,106 @@
+[gd_scene load_steps=7 format=3 uid="uid://dja24svco2j1v"]
+
+[ext_resource type="Script" uid="uid://bctt315nqeocb" path="res://Scripts/highscores.gd" id="1_27egc"]
+[ext_resource type="Texture2D" uid="uid://wrx0ak8uuo0a" path="res://Arts/main_menu_bg.png" id="2_bg"]
+[ext_resource type="FontFile" uid="uid://dojf4xr5s3tqx" path="res://Arts/Font/28 Days Later.ttf" id="3_font"]
+[ext_resource type="Texture2D" uid="uid://bftlih8yxb6c2" path="res://Arts/UI/FreeHorrorUi.png" id="4_ui"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_title"]
+font = ExtResource("3_font")
+font_size = 80
+outline_size = 5
+outline_color = Color(0.537255, 0, 0.027451, 0.352941)
+shadow_size = 15
+shadow_color = Color(0, 0, 0, 0.286275)
+shadow_offset = Vector2(7, 2)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_button"]
+texture = ExtResource("4_ui")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+region_rect = Rect2(6, 234, 52, 15)
+
+[node name="Highscores" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_27egc")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_bg")
+expand_mode = 1
+
+[node name="Title" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 15.0
+offset_bottom = 120.0
+grow_horizontal = 2
+text = "HIGH SCORES"
+label_settings = SubResource("LabelSettings_title")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MainContainer" type="VBoxContainer" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -400.0
+offset_top = 140.0
+offset_right = 400.0
+offset_bottom = -80.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScoresContainer" type="VBoxContainer" parent="MainContainer"]
+unique_name_in_owner = true
+texture_filter = 1
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 15
+
+[node name="ButtonContainer" type="VBoxContainer" parent="MainContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="ClearScoresButton" type="Button" parent="MainContainer/ButtonContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 28
+theme_override_styles/hover = SubResource("StyleBoxTexture_button")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_button")
+theme_override_styles/normal = SubResource("StyleBoxTexture_button")
+text = "CLEAR SCORES"
+
+[node name="BackButton" type="Button" parent="MainContainer/ButtonContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 28
+theme_override_styles/hover = SubResource("StyleBoxTexture_button")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_button")
+theme_override_styles/normal = SubResource("StyleBoxTexture_button")
+text = "MAIN MENU"
