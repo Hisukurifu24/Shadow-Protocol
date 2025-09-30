@@ -1,4 +1,20 @@
-[gd_scene format=3 uid="uid://4j2ikmmnmbaw"]
+[gd_scene load_steps=6 format=3 uid="uid://4j2ikmmnmbaw"]
+
+[ext_resource type="Script" uid="uid://crjm3xllpqyix" path="res://Scripts/credits.gd" id="1_7xmno"]
+[ext_resource type="Texture2D" uid="uid://wrx0ak8uuo0a" path="res://Arts/main_menu_bg.png" id="1_xbebw"]
+[ext_resource type="FontFile" uid="uid://dojf4xr5s3tqx" path="res://Arts/Font/28 Days Later.ttf" id="2_7xmno"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_uy3b0"]
+font = ExtResource("2_7xmno")
+font_size = 100
+outline_size = 5
+outline_color = Color(0.537255, 0, 0.027451, 0.352941)
+shadow_size = 20
+shadow_color = Color(0, 0, 0, 0.286275)
+shadow_offset = Vector2(9.82, 2.27)
+
+[sub_resource type="LabelSettings" id="LabelSettings_xbebw"]
+font_size = 32
 
 [node name="Credits" type="Control"]
 layout_mode = 3
@@ -7,17 +23,53 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_7xmno")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_xbebw")
+expand_mode = 1
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 31.0
+offset_bottom = 222.0
+grow_horizontal = 2
+text = "SHADOW
+PROTOCOL"
+label_settings = SubResource("LabelSettings_uy3b0")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 13
+anchors_preset = 8
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -467.0
-offset_right = 467.0
+anchor_bottom = 0.5
+offset_left = -227.0
+offset_top = -64.0
+offset_right = 227.0
+offset_bottom = 140.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Subtitle" type="Label" parent="VBoxContainer/VBoxContainer3"]
+layout_mode = 2
+text = "GAME BY HISUKURIFU"
+label_settings = SubResource("LabelSettings_xbebw")
+horizontal_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
@@ -25,6 +77,7 @@ layout_mode = 2
 [node name="Subtitle" type="Label" parent="VBoxContainer/VBoxContainer"]
 layout_mode = 2
 text = "ART"
+label_settings = SubResource("LabelSettings_xbebw")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/VBoxContainer"]
 layout_mode = 2
@@ -77,6 +130,7 @@ layout_mode = 2
 [node name="Subtitle" type="Label" parent="VBoxContainer/VBoxContainer2"]
 layout_mode = 2
 text = "SOUND"
+label_settings = SubResource("LabelSettings_xbebw")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/VBoxContainer2"]
 layout_mode = 2
@@ -92,3 +146,19 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 text = "f8studios"
+
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -133.0
+offset_top = -120.0
+offset_right = 133.0
+offset_bottom = -46.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 50
+text = "BACK"
