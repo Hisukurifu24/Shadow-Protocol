@@ -381,7 +381,7 @@ position = Vector2(-33.3333, 6.66667)
 shape = SubResource("CircleShape2D_r7t2e")
 
 [node name="Muzzle" type="Node2D" parent="."]
-position = Vector2(153.333, 56.6667)
+position = Vector2(143.333, 53.3333)
 
 [node name="MeleeRange" type="Area2D" parent="."]
 unique_name_in_owner = true

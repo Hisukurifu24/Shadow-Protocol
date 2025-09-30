@@ -369,7 +369,7 @@ func _on_body_frame_changed() -> void:
 			damage = slots[current_weapon_slot].damage
 		else:
 			# Default punch/unarmed damage if no melee weapon equipped
-			damage = 50
+			damage = 25
 		
 		# Check for all bodies currently in the melee area and damage them
 		var overlapping_bodies = melee_area.get_overlapping_bodies()

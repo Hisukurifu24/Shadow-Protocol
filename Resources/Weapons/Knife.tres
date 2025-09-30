@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="Weapon" load_steps=4 format=3 uid="uid://cpdq4ohhyjxgx"]
+[gd_resource type="Resource" script_class="Weapon" load_steps=5 format=3 uid="uid://cpdq4ohhyjxgx"]
 
+[ext_resource type="PackedScene" uid="uid://cjaotaxjq3hf" path="res://Scenes/Bullet.tscn" id="1_5gjmi"]
 [ext_resource type="Script" uid="uid://calnw065pbolm" path="res://Scripts/Resources/Weapon.gd" id="2_dsnck"]
 [ext_resource type="Texture2D" uid="uid://bq27ptbnwd4tx" path="res://Arts/Guns/knife.png" id="2_qg4wg"]
 
@@ -12,9 +13,10 @@ script = ExtResource("2_dsnck")
 name = "Knife"
 sprite = SubResource("AtlasTexture_qg4wg")
 type = 3
-damage = 10
+damage = 50
 fire_rate = 10.0
 reload_time = 1.0
 magazine_size = 0
 bullet_speed = 800.0
+bullet_scene = ExtResource("1_5gjmi")
 metadata/_custom_type_script = "uid://calnw065pbolm"
