@@ -1,0 +1,28 @@
+[gd_resource type="Theme" load_steps=8 format=3 uid="uid://xqgdaytqcmxa"]
+
+[ext_resource type="Texture2D" uid="uid://bftlih8yxb6c2" path="res://Arts/UI/FreeHorrorUi.png" id="1_76a3c"]
+[ext_resource type="FontFile" uid="uid://dojf4xr5s3tqx" path="res://Arts/Font/28 Days Later.ttf" id="1_ot8jh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ot8jh"]
+atlas = ExtResource("1_76a3c")
+region = Rect2(6, 234, 52, 15)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8fd2c"]
+texture = SubResource("AtlasTexture_ot8jh")
+modulate_color = Color(0.505344, 0.505344, 0.505344, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mfc2h"]
+texture = SubResource("AtlasTexture_ot8jh")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pem07"]
+atlas = ExtResource("1_76a3c")
+region = Rect2(70, 234, 52, 15)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yuax3"]
+texture = SubResource("AtlasTexture_pem07")
+
+[resource]
+Button/fonts/font = ExtResource("1_ot8jh")
+Button/styles/hover = SubResource("StyleBoxTexture_8fd2c")
+Button/styles/normal = SubResource("StyleBoxTexture_mfc2h")
+Button/styles/pressed = SubResource("StyleBoxTexture_yuax3")
