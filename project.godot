@@ -18,6 +18,7 @@ config/icon="uid://dhuvg8cbea6af"
 [autoload]
 
 GameManagerNode="*res://Scripts/GameManager.gd"
+SettingsManagerNode="*res://Scripts/SettingsManager.gd"
 
 [display]
 

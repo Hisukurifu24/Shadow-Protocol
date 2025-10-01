@@ -19,7 +19,7 @@ var current_ammo: int
 ## Speed of the bullet
 @export var bullet_speed: float = 800.0
 ## Scene for the bullet
-@export var bullet_scene: PackedScene = preload("res://Scenes/Bullet.tscn")
+@export var bullet_scene: PackedScene = preload("res://Scenes/bullet.tscn")
 ## Sound effect for firing this weapon
 @export var fire_sound: AudioStream
 

@@ -25,12 +25,12 @@ func _ready():
 func _on_play_button_pressed():
 	# Handle play button press
 	GameManagerNode.prepare_for_next_round()
-	get_tree().change_scene_to_file("res://Scenes/World.tscn")
+	get_tree().change_scene_to_file("res://Scenes/world.tscn")
 	pass
 
 func _on_settings_button_pressed():
 	# Handle settings button press
-	get_tree().change_scene_to_file("res://Scenes/Settings.tscn")
+	get_tree().change_scene_to_file("res://Scenes/settings.tscn")
 	pass
 
 func _on_highscores_button_pressed():

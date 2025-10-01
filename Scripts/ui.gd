@@ -13,7 +13,7 @@ extends CanvasLayer
 var player: Player
 
 func _ready():
-	player = get_node("/root/World/Player")
+	player = get_node("/root/World/Player") as Player
 	player.fired.connect(_on_player_fired)
 	player.reload_started.connect(_on_player_reload_started)
 	player.reload_finished.connect(_on_player_reload_finished)
