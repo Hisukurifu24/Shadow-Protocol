@@ -16,8 +16,8 @@ extends Control
 
 # Audio bus indices
 const MASTER_BUS = 0
-const SFX_BUS = 1
-const MUSIC_BUS = 2
+const MUSIC_BUS = 1
+const SFX_BUS = 2
 
 # Settings data (now references the autoload)
 # Direct access to SettingsManager via get_node
@@ -249,16 +249,22 @@ func _on_master_volume_changed(value: float):
 	SettingsManagerNode.set_setting("master_volume", value)
 	AudioServer.set_bus_volume_db(MASTER_BUS, linear_to_db(value))
 	update_volume_labels()
+	# Play slider sound feedback
+	UiAudioManager.play_slider_change()
 
 func _on_sfx_volume_changed(value: float):
 	SettingsManagerNode.set_setting("sfx_volume", value)
 	AudioServer.set_bus_volume_db(SFX_BUS, linear_to_db(value))
 	update_volume_labels()
+	# Play slider sound feedback
+	UiAudioManager.play_slider_change()
 
 func _on_music_volume_changed(value: float):
 	SettingsManagerNode.set_setting("music_volume", value)
 	AudioServer.set_bus_volume_db(MUSIC_BUS, linear_to_db(value))
 	update_volume_labels()
+	# Play slider sound feedback
+	UiAudioManager.play_slider_change()
 
 func _on_fullscreen_toggled(pressed: bool):
 	SettingsManagerNode.set_setting("fullscreen", pressed)
