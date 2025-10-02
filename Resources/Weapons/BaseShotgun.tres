@@ -1,8 +1,10 @@
-[gd_resource type="Resource" script_class="Weapon" load_steps=6 format=3 uid="uid://dhd0575b1r30c"]
+[gd_resource type="Resource" script_class="Weapon" load_steps=8 format=3 uid="uid://dhd0575b1r30c"]
 
 [ext_resource type="PackedScene" uid="uid://bkf862ekeybun" path="res://Scenes/pellet.tscn" id="1_njmna"]
 [ext_resource type="Script" uid="uid://calnw065pbolm" path="res://Scripts/Resources/Weapon.gd" id="2_cilw4"]
 [ext_resource type="Texture2D" uid="uid://0uer8hv68xhj" path="res://Arts/Guns/Spritesheet/spritesheet.png" id="3_dy46y"]
+[ext_resource type="AudioStream" uid="uid://bdey8p0bukakp" path="res://Arts/Sounds/Guns/Reloads, Cycling & More/MP3/Pump Reload Full Fast MP3.mp3" id="3_h6x3l"]
+[ext_resource type="AudioStream" uid="uid://6oglkihrwuc3" path="res://Arts/Sounds/Guns/Mag Pack/MP3/Single Shotgun Load.mp3" id="4_h3nfe"]
 [ext_resource type="AudioStream" uid="uid://b63ytjlk3ei32" path="res://Arts/Sounds/Guns/20 Gauge/MP3/20 Gauge Single.mp3" id="4_shotgun_sound"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xxoqn"]
@@ -21,4 +23,6 @@ magazine_size = 8
 bullet_speed = 1200.0
 bullet_scene = ExtResource("1_njmna")
 fire_sound = ExtResource("4_shotgun_sound")
+reload_sound = ExtResource("4_h3nfe")
+pump_sound = ExtResource("3_h6x3l")
 metadata/_custom_type_script = "uid://calnw065pbolm"

@@ -22,6 +22,12 @@ var current_ammo: int
 @export var bullet_scene: PackedScene = preload("res://Scenes/bullet.tscn")
 ## Sound effect for firing this weapon
 @export var fire_sound: AudioStream
+## Sound effect for unloading the magazine
+@export var unload_sound: AudioStream
+## Sound effect for reloading the magazine
+@export var reload_sound: AudioStream
+## Sound effect for pumping (for shotguns or sniper rifles)
+@export var pump_sound: AudioStream
 
 func _init():
 	current_ammo = magazine_size

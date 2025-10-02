@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="Weapon" load_steps=6 format=3 uid="uid://dn8a6vh88bqiw"]
+[gd_resource type="Resource" script_class="Weapon" load_steps=8 format=3 uid="uid://dn8a6vh88bqiw"]
 
 [ext_resource type="PackedScene" uid="uid://cjaotaxjq3hf" path="res://Scenes/bullet.tscn" id="1_pxgdt"]
 [ext_resource type="Script" uid="uid://calnw065pbolm" path="res://Scripts/Resources/Weapon.gd" id="2_ltcol"]
+[ext_resource type="AudioStream" uid="uid://bbfehvxb88xgo" path="res://Arts/Sounds/Guns/Mag Pack/MP3/9mm Magazine Pack.mp3" id="3_cxdp6"]
 [ext_resource type="Texture2D" uid="uid://0uer8hv68xhj" path="res://Arts/Guns/Spritesheet/spritesheet.png" id="3_qmyoq"]
 [ext_resource type="AudioStream" uid="uid://dn2ee3gg05ljm" path="res://Arts/Sounds/Guns/9mm/MP3/9mm Single.mp3" id="4_pistol_sound"]
+[ext_resource type="AudioStream" uid="uid://cwrhnhobmtoy6" path="res://Arts/Sounds/Guns/Mag Pack/MP3/9mm Magazine Unpack.mp3" id="6_ynthx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xxoqn"]
 atlas = ExtResource("3_qmyoq")
@@ -21,4 +23,6 @@ magazine_size = 12
 bullet_speed = 600.0
 bullet_scene = ExtResource("1_pxgdt")
 fire_sound = ExtResource("4_pistol_sound")
+unload_sound = ExtResource("6_ynthx")
+reload_sound = ExtResource("3_cxdp6")
 metadata/_custom_type_script = "uid://calnw065pbolm"

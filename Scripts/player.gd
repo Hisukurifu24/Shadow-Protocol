@@ -96,7 +96,6 @@ func _ready() -> void:
 	pick_up_weapon(load("res://Resources/Weapons/BaseRifle.tres"))
 	pick_up_weapon(load("res://Resources/Weapons/BasePistol.tres"))
 	pick_up_weapon(load("res://Resources/Weapons/Knife.tres"))
-	pick_up_weapon(load("res://Resources/Weapons/BaseShotgun.tres"))
 	inventory["rifle_ammo"] = 90
 	inventory["pistol_ammo"] = 60
 	inventory["shotgun_ammo"] = 32
@@ -306,13 +305,23 @@ func shoot() -> void:
 		get_tree().current_scene.add_child(b)
 	
 	# Play weapon-specific gun sound effect
-	if slots[current_weapon_slot].fire_sound != null:
+	if slots[current_weapon_slot].fire_sound:
 		gun_sfx.stream = slots[current_weapon_slot].fire_sound
 		gun_sfx.play()
+		# Play pump sound effect for shotguns
+		if slots[current_weapon_slot].type == Weapon.WeaponType.SHOTGUN and slots[current_weapon_slot].pump_sound:
+			await get_tree().create_timer(0.4).timeout # Delay for pump sound
+			gun_sfx.stream = slots[current_weapon_slot].pump_sound
+			gun_sfx.play()
 
 func _start_reload() -> void:
 	if _is_reloading:
 		return
+	
+	if slots[current_weapon_slot].unload_sound:
+		# Play unload sound effect
+		gun_sfx.stream = slots[current_weapon_slot].unload_sound
+		gun_sfx.play()
 	
 	reload_started.emit()
 	_is_reloading = true
@@ -326,6 +335,11 @@ func _finish_reload() -> void:
 		# Update ammo counts
 		slots[current_weapon_slot].current_ammo += bullets_to_reload
 		set_current_weapon_ammo(get_current_weapon_ammo() - bullets_to_reload)
+
+		if slots[current_weapon_slot].reload_sound:
+			# Play reload sound effect
+			gun_sfx.stream = slots[current_weapon_slot].reload_sound
+			gun_sfx.play()
 		
 		# Check if we need to continue reloading (magazine not full and have ammo)
 		var magazine_full = slots[current_weapon_slot].current_ammo >= slots[current_weapon_slot].magazine_size
@@ -338,6 +352,10 @@ func _finish_reload() -> void:
 			return # Don't set _is_reloading to false or emit reload_finished yet
 		else:
 			# Magazine is full or no more ammo - finish reloading
+			if slots[current_weapon_slot].pump_sound:
+				# Play pump sound effect
+				gun_sfx.stream = slots[current_weapon_slot].pump_sound
+				gun_sfx.play()
 			_is_reloading = false
 			reload_finished.emit()
 	else:
@@ -348,6 +366,11 @@ func _finish_reload() -> void:
 		# Update ammo counts
 		slots[current_weapon_slot].current_ammo += bullets_to_reload
 		set_current_weapon_ammo(get_current_weapon_ammo() - bullets_to_reload)
+
+		if slots[current_weapon_slot].reload_sound:
+			# Play reload sound effect
+			gun_sfx.stream = slots[current_weapon_slot].reload_sound
+			gun_sfx.play()
 		
 		# Finish reloading for non-shotgun weapons
 		_is_reloading = false
@@ -363,6 +386,8 @@ func _on_animation_finished() -> void:
 func _on_body_frame_changed() -> void:
 	# Apply melee damage at a specific frame of the melee attack animation
 	if body_sprite.animation == "melee_attack" and body_sprite.frame == 10 and _is_melee_attacking:
+		gun_sfx.stream = preload("res://Arts/Sounds/Guns/melee sounds/melee sound.wav")
+		gun_sfx.play()
 		# Get damage value
 		var damage = 0
 		if slots[current_weapon_slot] != null and slots[current_weapon_slot].type == Weapon.WeaponType.MELEE:
