@@ -80,7 +80,7 @@ grow_vertical = 0
 placeholder_text = "Your name"
 alignment = 1
 
-[node name="SaveScoreButton" type="Button" parent="."]
+[node name="SaveScoreButton" type="Button" parent="." groups=["ui_buttons"]]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 7
@@ -97,7 +97,7 @@ grow_vertical = 0
 theme_override_font_sizes/font_size = 25
 text = "SAVE SCORE"
 
-[node name="SkipButton" type="Button" parent="."]
+[node name="SkipButton" type="Button" parent="." groups=["ui_buttons"]]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 7

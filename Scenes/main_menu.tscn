@@ -81,7 +81,7 @@ grow_vertical = 2
 theme_override_constants/separation = 10
 alignment = 1
 
-[node name="PlayButton" type="Button" parent="VBoxContainer"]
+[node name="PlayButton" type="Button" parent="VBoxContainer" groups=["ui_buttons"]]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 65)
 layout_mode = 2
@@ -93,7 +93,7 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_opfnp")
 theme_override_styles/normal = SubResource("StyleBoxTexture_yhxw7")
 text = "PLAY"
 
-[node name="SettingsButton" type="Button" parent="VBoxContainer"]
+[node name="SettingsButton" type="Button" parent="VBoxContainer" groups=["ui_buttons"]]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 65)
 layout_mode = 2
@@ -105,7 +105,7 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_opfnp")
 theme_override_styles/normal = SubResource("StyleBoxTexture_yhxw7")
 text = "Settings"
 
-[node name="HighscoresButton" type="Button" parent="VBoxContainer"]
+[node name="HighscoresButton" type="Button" parent="VBoxContainer" groups=["ui_buttons"]]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 65)
 layout_mode = 2
@@ -117,7 +117,7 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_opfnp")
 theme_override_styles/normal = SubResource("StyleBoxTexture_yhxw7")
 text = "HIGHSCORES"
 
-[node name="CreditsButton" type="Button" parent="VBoxContainer"]
+[node name="CreditsButton" type="Button" parent="VBoxContainer" groups=["ui_buttons"]]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 65)
 layout_mode = 2
@@ -129,7 +129,7 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_opfnp")
 theme_override_styles/normal = SubResource("StyleBoxTexture_yhxw7")
 text = "CREDITS"
 
-[node name="ExitButton" type="Button" parent="VBoxContainer"]
+[node name="ExitButton" type="Button" parent="VBoxContainer" groups=["ui_buttons"]]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 65)
 layout_mode = 2

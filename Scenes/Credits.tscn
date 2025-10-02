@@ -147,7 +147,8 @@ size_flags_horizontal = 3
 size_flags_vertical = 1
 text = "f8studios"
 
-[node name="BackButton" type="Button" parent="."]
+[node name="BackButton" type="Button" parent="." groups=["ui_buttons"]]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5

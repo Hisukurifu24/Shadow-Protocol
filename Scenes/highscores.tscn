@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://dja24svco2j1v"]
+[gd_scene load_steps=5 format=3 uid="uid://dja24svco2j1v"]
 
 [ext_resource type="Script" uid="uid://bctt315nqeocb" path="res://Scripts/highscores.gd" id="1_27egc"]
 [ext_resource type="Texture2D" uid="uid://wrx0ak8uuo0a" path="res://Arts/main_menu_bg.png" id="2_bg"]
 [ext_resource type="FontFile" uid="uid://dojf4xr5s3tqx" path="res://Arts/Font/28 Days Later.ttf" id="3_font"]
-[ext_resource type="Texture2D" uid="uid://bftlih8yxb6c2" path="res://Arts/UI/FreeHorrorUi.png" id="4_ui"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_title"]
 font = ExtResource("3_font")
@@ -13,14 +12,6 @@ outline_color = Color(0.537255, 0, 0.027451, 0.352941)
 shadow_size = 15
 shadow_color = Color(0, 0, 0, 0.286275)
 shadow_offset = Vector2(7, 2)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_button"]
-texture = ExtResource("4_ui")
-texture_margin_left = 6.0
-texture_margin_top = 6.0
-texture_margin_right = 6.0
-texture_margin_bottom = 6.0
-region_rect = Rect2(6, 234, 52, 15)
 
 [node name="Highscores" type="Control"]
 layout_mode = 3
@@ -83,24 +74,18 @@ size_flags_vertical = 4
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="ClearScoresButton" type="Button" parent="MainContainer/ButtonContainer"]
+[node name="ClearScoresButton" type="Button" parent="MainContainer/ButtonContainer" groups=["ui_buttons"]]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_font")
 theme_override_font_sizes/font_size = 28
-theme_override_styles/hover = SubResource("StyleBoxTexture_button")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_button")
-theme_override_styles/normal = SubResource("StyleBoxTexture_button")
 text = "CLEAR SCORES"
 
-[node name="BackButton" type="Button" parent="MainContainer/ButtonContainer"]
+[node name="BackButton" type="Button" parent="MainContainer/ButtonContainer" groups=["ui_buttons"]]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_font")
 theme_override_font_sizes/font_size = 28
-theme_override_styles/hover = SubResource("StyleBoxTexture_button")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_button")
-theme_override_styles/normal = SubResource("StyleBoxTexture_button")
 text = "MAIN MENU"

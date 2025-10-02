@@ -268,7 +268,7 @@ theme_override_font_sizes/font_size = 18
 text = "Resolution:"
 vertical_alignment = 1
 
-[node name="ResolutionOption" type="OptionButton" parent="VBoxContainer/ScrollContainer/MainContainer/DisplaySection/DisplayContainer/ResolutionContainer"]
+[node name="ResolutionOption" type="OptionButton" parent="VBoxContainer/ScrollContainer/MainContainer/DisplaySection/DisplayContainer/ResolutionContainer" groups=["ui_buttons"]]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -293,7 +293,7 @@ theme_override_font_sizes/font_size = 18
 text = "Quality:"
 vertical_alignment = 1
 
-[node name="QualityOption" type="OptionButton" parent="VBoxContainer/ScrollContainer/MainContainer/DisplaySection/DisplayContainer/QualityContainer"]
+[node name="QualityOption" type="OptionButton" parent="VBoxContainer/ScrollContainer/MainContainer/DisplaySection/DisplayContainer/QualityContainer" groups=["ui_buttons"]]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -318,7 +318,7 @@ theme_override_font_sizes/font_size = 18
 text = "Fullscreen:"
 vertical_alignment = 1
 
-[node name="FullscreenButton" type="CheckBox" parent="VBoxContainer/ScrollContainer/MainContainer/DisplaySection/DisplayContainer/FullscreenContainer"]
+[node name="FullscreenButton" type="CheckBox" parent="VBoxContainer/ScrollContainer/MainContainer/DisplaySection/DisplayContainer/FullscreenContainer" groups=["ui_buttons"]]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_8xlkc")
@@ -336,7 +336,7 @@ theme_override_font_sizes/font_size = 18
 text = "V-Sync:"
 vertical_alignment = 1
 
-[node name="VsyncButton" type="CheckBox" parent="VBoxContainer/ScrollContainer/MainContainer/DisplaySection/DisplayContainer/VsyncContainer"]
+[node name="VsyncButton" type="CheckBox" parent="VBoxContainer/ScrollContainer/MainContainer/DisplaySection/DisplayContainer/VsyncContainer" groups=["ui_buttons"]]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_8xlkc")
@@ -351,7 +351,7 @@ layout_mode = 2
 layout_mode = 2
 alignment = 1
 
-[node name="ResetButton" type="Button" parent="VBoxContainer/ButtonContainer"]
+[node name="ResetButton" type="Button" parent="VBoxContainer/ButtonContainer" groups=["ui_buttons"]]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
@@ -364,7 +364,7 @@ text = "RESET"
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 
-[node name="BackButton" type="Button" parent="VBoxContainer/ButtonContainer"]
+[node name="BackButton" type="Button" parent="VBoxContainer/ButtonContainer" groups=["ui_buttons"]]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(150, 50)
 layout_mode = 2

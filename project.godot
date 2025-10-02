@@ -19,6 +19,7 @@ config/icon="uid://dhuvg8cbea6af"
 
 GameManagerNode="*res://Scripts/GameManager.gd"
 SettingsManagerNode="*res://Scripts/SettingsManager.gd"
+UiAudioManager="*res://Scripts/UIAudioManager.gd"
 
 [display]
 
