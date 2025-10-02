@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/9mm Magazine Unpack.mp3-59c25517c4c02677a0681
 [params]
 
 loop=false
-loop_offset=0
-bpm=0
+loop_offset=0.0
+bpm=0.0
 beat_count=0
 bar_beats=4

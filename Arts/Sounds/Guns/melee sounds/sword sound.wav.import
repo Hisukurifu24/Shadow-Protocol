@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://d8t062mswrks"
+path="res://.godot/imported/sword sound.wav-628479efadcb3de8782d7bd5691be4ef.sample"
+
+[deps]
+
+source_file="res://Arts/Sounds/Guns/melee sounds/sword sound.wav"
+dest_files=["res://.godot/imported/sword sound.wav-628479efadcb3de8782d7bd5691be4ef.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

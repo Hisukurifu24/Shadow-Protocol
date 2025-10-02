@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dr0haenwqddti"
+path="res://.godot/imported/Cursor - 1.ogg-f0eeedb85eefcfe03f12735d5d24526c.oggvorbisstr"
+
+[deps]
+
+source_file="res://Arts/Sounds/UI/Cursor - 1.ogg"
+dest_files=["res://.godot/imported/Cursor - 1.ogg-f0eeedb85eefcfe03f12735d5d24526c.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

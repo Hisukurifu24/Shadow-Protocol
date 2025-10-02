@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dhh1llgbfkxem"
+path="res://.godot/imported/animal melee sound.wav-e3a0c680b212c50faf68b53ff21f9788.sample"
+
+[deps]
+
+source_file="res://Arts/Sounds/Guns/melee sounds/animal melee sound.wav"
+dest_files=["res://.godot/imported/animal melee sound.wav-e3a0c680b212c50faf68b53ff21f9788.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
