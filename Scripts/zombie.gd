@@ -8,6 +8,7 @@ var attack_cooldown: float = 1.5 # Time between attacks in seconds
 var attack_timer: float = 0.0 # Timer to track cooldown
 var _is_attacking: bool = false
 var attack_range: float = 50.0
+var spawned: bool = false
 
 @onready var sprite = $AnimatedSprite2D
 
@@ -16,8 +17,15 @@ func _ready() -> void:
 	player = get_node("/root/World/Player")
 	sprite.animation_finished.connect(_on_animation_finished)
 	sprite.frame_changed.connect(_on_frame_changed)
+	$AnimationPlayer.play("spawn")
+	$AnimationPlayer.animation_finished.connect(_on_spawn_finished)
+
 
 func _physics_process(delta: float) -> void:
+	if not spawned:
+		velocity = Vector2.ZERO
+		return
+	
 	var distance_to_player = global_position.distance_to(player.global_position)
 	var direction_to_player = (player.global_position - global_position).normalized()
 	
@@ -52,6 +60,14 @@ func _physics_process(delta: float) -> void:
 func _on_animation_finished() -> void:
 	if sprite.animation == "attack":
 		_is_attacking = false
+
+func _on_spawn_finished(_anim_name: String) -> void:
+	spawned = true
+	# Add a random color tint to make each zombie unique and stand out more
+	var red = randf_range(1.0, 1.3)
+	var green = randf_range(0.7, 1.0)
+	var blue = randf_range(0.7, 1.0)
+	sprite.modulate = Color(red, green, blue, 1.0)
 
 func _on_frame_changed() -> void:
 	# Apply damage at a specific frame of the attack animation
